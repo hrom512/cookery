@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :cookery, Cookery.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "cookery",
+  password: "cookery",
   database: "cookery_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :cookery, Cookery.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "cookery",
+  password: "cookery",
   database: "cookery_dev",
   hostname: "localhost",
   pool_size: 10
