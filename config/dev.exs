@@ -37,7 +37,7 @@ config :cookery, CookeryWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/cookery_web/views/.*(ex)$},
-      ~r{lib/cookery_web/templates/.*(eex)$}
+      ~r{lib/cookery_web/templates/.*(eex|slim|slime)$}
     ]
   ]
 
