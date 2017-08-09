@@ -1,5 +1,5 @@
-defmodule CookeryWeb.Router do
-  use CookeryWeb, :router
+defmodule CookeryAdmin.Router do
+  use CookeryAdmin, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -9,11 +9,9 @@ defmodule CookeryWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  scope "/", CookeryWeb do
+  scope "/", CookeryAdmin do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/recipes", RecipeController
   end
-
-  forward "/admin", CookeryAdmin.Plug, [], as: :admin
 end
