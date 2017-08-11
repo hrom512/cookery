@@ -1,0 +1,49 @@
+.page-header.navbar.navbar-fixed-top
+  .page-header-inner
+
+    .page-logo
+      a href="/"
+        img.logo-default src=static_path(@conn,"/admin/layouts/layout/img/logo.png") alt="logo"
+      .menu-toggler.sidebar-toggler
+        span
+
+    a.menu-toggler.responsive-toggler href="javascript:;" data-toggle="collapse" data-target=".navbar-collapse"
+      span
+
+    / .top-menu
+    /   ul.nav.navbar-nav.pull-right
+
+    /     li.dropdown.dropdown-user
+    /       a.dropdown-toggle href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"
+    /         img.img-circle alt="" src=static_path(@conn,"/admin/layouts/layout/img/avatar3_small.jpg")
+    /         span.username.username-hide-on-mobile
+    /           | Nick
+    /         i.fa.fa-angle-down
+    /       ul.dropdown-menu.dropdown-menu-default
+    /         li
+    /           a href="page_user_profile_1.html"
+    /             i.icon-user
+    /             | My Profile
+    /         li
+    /           a href="app_calendar.html"
+    /             i.icon-calendar
+    /             | My Calendar
+    /         li
+    /           a href="app_inbox.html"
+    /             i.icon-envelope-open
+    /             | My Inbox
+    /             span.badge.badge-danger 3
+    /         li
+    /           a href="app_todo.html"
+    /             i.icon-rocket
+    /             | My Tasks
+    /             span.badge.badge-success 7
+    /         li.divider
+    /         li
+    /           a href="page_user_lock_1.html"
+    /             i.icon-lock
+    /             | Lock Screen
+    /         li
+    /           a href="page_user_login_1.html"
+    /             i.icon-key
+    /             | Log Out

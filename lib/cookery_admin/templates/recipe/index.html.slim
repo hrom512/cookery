@@ -1,0 +1,35 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title Listing Recipes
+    .actions
+      a.btn.btn-sm.btn-outline.btn-circle.green href=recipe_path(@conn,:new)
+        i.fa.fa-plus
+        |  New Recipe
+
+  .portlet-body
+    / .note.note-danger
+    /   p Error message
+
+    table.table.table-hover.table-light
+      thead
+        tr.uppercase
+          th Title
+          th Description
+          th
+      tbody
+        = for recipe <- @recipes do
+          tr
+            td = recipe.title
+            td = recipe.description
+
+            td.text-right
+              a.btn.btn-xs.btn-outline.btn-circle.green href=recipe_path(@conn,:show,recipe)
+                i.fa.fa-eye
+                |  Show
+              a.btn.btn-xs.btn-outline.btn-circle.blue href=recipe_path(@conn,:edit,recipe)
+                i.fa.fa-edit
+                |  Edit
+              a.btn.btn-xs.btn-outline.btn-circle.red href=recipe_path(@conn,:delete,recipe)
+                i.fa.fa-trash-o
+                |  Delete

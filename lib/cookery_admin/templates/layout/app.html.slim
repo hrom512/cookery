@@ -4,25 +4,24 @@ html lang="en"
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content=""
-    meta name="author" content=""
 
-    title Hello Cookery!
-    link rel="stylesheet" href=static_path(@conn,"/css/app.css")
+    title Admin
 
-  body
-    .container
-      header.header
-        nav role="navigation"
-          ul.nav.nav-pills.pull-right
-            li
-              a href="http://www.phoenixframework.org/docs" Get Started
-        span.logo
+    = render "_head.html", assigns
 
-      p.alert.alert-info role="alert" = get_flash(@conn, :info)
-      p.alert.alert-danger role="alert" = get_flash(@conn, :error)
+  body.page-header-fixed.page-sidebar-closed-hide-logo.page-content-white
+    .page-wrapper
 
-      main role="main"
-        = render @view_module, @view_template, assigns
+      = render "_header.html", assigns
 
-    script src=static_path(@conn,"/js/app.js")
+      .clearfix
+      .page-container
+
+        = render "_sidebar.html"
+
+        .page-content-wrapper
+          .page-content
+
+            = render @view_module, @view_template, assigns
+
+      = render "_footer.html", assigns
