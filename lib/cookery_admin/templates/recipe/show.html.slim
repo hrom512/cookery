@@ -1,0 +1,26 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title Recipe #{@recipe.id}
+    .actions
+      a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn,:index)
+        i.fa.fa-arrow-left
+        |  Back to list
+      | &nbsp;
+      a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn,:edit,@recipe)
+        i.fa.fa-edit
+        |  Edit
+
+  .portlet-body
+    table.table.table-hover.table-light
+      thead
+        tr.uppercase
+          th width="20%" Name
+          th width="80%" Value
+      tbody
+        tr
+          td Title
+          td = @recipe.title
+        tr
+          td Description
+          td = @recipe.description

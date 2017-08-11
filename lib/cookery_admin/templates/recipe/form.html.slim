@@ -1,0 +1,14 @@
+= form_for @changeset, @action, fn f ->
+  .form-body
+    .form-group class="#{if @changeset.action && @changeset.errors[:title] do "has-error" end}"
+      = label f, :title
+      = text_input f, :title, class: "form-control"
+      = error_tag f, :title
+
+    .form-group class="#{if @changeset.action && @changeset.errors[:description] do "has-error" end}"
+      = label f, :description
+      = textarea f, :description, class: "form-control"
+      = error_tag f, :description
+
+  .form-actions
+    = submit "Submit", class: "btn blue"

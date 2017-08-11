@@ -3,14 +3,11 @@
     .caption
       .page-title Listing Recipes
     .actions
-      a.btn.btn-sm.btn-outline.btn-circle.green href=recipe_path(@conn,:new)
+      a.btn.btn-sm.btn-circle.green href=recipe_path(@conn,:new)
         i.fa.fa-plus
         |  New Recipe
 
   .portlet-body
-    / .note.note-danger
-    /   p Error message
-
     table.table.table-hover.table-light
       thead
         tr.uppercase
