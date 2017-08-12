@@ -27,6 +27,4 @@
               a.btn.btn-xs.btn-outline.btn-circle.blue href=recipe_path(@conn,:edit,recipe)
                 i.fa.fa-edit
                 |  Edit
-              a.btn.btn-xs.btn-outline.btn-circle.red href=recipe_path(@conn,:delete,recipe)
-                i.fa.fa-trash-o
-                |  Delete
+              = link "Delete", to: recipe_path(@conn, :delete, recipe), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"
