@@ -17,6 +17,8 @@ defmodule CookeryAdmin.Router do
   scope "/", CookeryAdmin do
     pipe_through [:browser, :browser_auth]
 
+    get "/", DashboardController, :index
+
     resources "/recipes", RecipeController
   end
 end
