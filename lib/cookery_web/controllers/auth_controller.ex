@@ -20,4 +20,10 @@ defmodule CookeryWeb.AuthController do
     |> Guardian.Plug.sign_out
     |> redirect(to: "/")
   end
+
+  def unauthenticated(conn, params) do
+    conn
+    |> put_flash(:info, "Authentication required")
+    |> redirect(to: "/login")
+  end
 end

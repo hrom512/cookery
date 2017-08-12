@@ -5,6 +5,8 @@ defmodule CookeryAdmin do
       import Plug.Conn
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.Gettext
+
+      plug Guardian.Plug.EnsureAuthenticated, handler: CookeryWeb.AuthController
     end
   end
 
