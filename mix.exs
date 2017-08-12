@@ -20,7 +20,7 @@ defmodule Cookery.Mixfile do
   def application do
     [
       mod: {Cookery.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :comeonin]
     ]
   end
 
@@ -33,6 +33,7 @@ defmodule Cookery.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # default
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
@@ -41,7 +42,12 @@ defmodule Cookery.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:phoenix_slime, "~> 0.9.0"}
+      # templates
+      {:phoenix_slime, "~> 0.9.0"},
+      # auth
+      {:guardian, "~> 0.14"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12.0"}
     ]
   end
 

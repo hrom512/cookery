@@ -26,6 +26,18 @@ config :phoenix, :template_engines,
   slim: PhoenixSlime.Engine,
   slime: PhoenixSlime.Engine
 
+config :guardian, Guardian,
+  allowed_algos: ["HS512"],
+  verify_issuer: true,
+  issuer: "Cookery",
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  serializer: Cookery.GuardianSerializer,
+  secret_key: %{
+    "k" => "HsXehGdPXw65vqrMHygNabePeKkDQGyh9k2kdxqi4_KMB1OaDY_9IgANsd9XVh-nFENhCT_V5YyXcacxAYhV5Q",
+    "kty" => "oct"
+  }
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

@@ -13,6 +13,9 @@ defmodule CookeryWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/login", AuthController, :login
+    get "/logout", AuthController, :logout
   end
 
   forward "/admin", CookeryAdmin.Plug, [], as: :admin

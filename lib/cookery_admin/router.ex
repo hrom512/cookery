@@ -9,8 +9,13 @@ defmodule CookeryAdmin.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :browser_auth do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/", CookeryAdmin do
-    pipe_through :browser
+    pipe_through [:browser, :browser_auth]
 
     resources "/recipes", RecipeController
   end
