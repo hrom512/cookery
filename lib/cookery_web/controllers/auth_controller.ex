@@ -15,7 +15,9 @@ defmodule CookeryWeb.AuthController do
          |> Guardian.Plug.sign_in(user)
          |> redirect(to: "/admin")
       {:error, _} ->
-        render conn, "login_form.html"
+        conn
+        |> put_flash(:error, "User not found or password invalid")
+        |> render "login_form.html"
     end
   end
 
@@ -27,7 +29,6 @@ defmodule CookeryWeb.AuthController do
 
   def unauthenticated(conn, params) do
     conn
-    |> put_flash(:info, "Authentication required")
     |> redirect(to: "/login")
   end
 end
