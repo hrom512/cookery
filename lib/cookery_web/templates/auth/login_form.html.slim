@@ -1,0 +1,13 @@
+h1 Login
+
+= form_for @conn, login_path(@conn, :login), [name: :user], fn f ->
+  .form-group
+    label Login
+    = text_input f, :login, class: "form-control"
+
+  .form-group
+    label Password
+    = password_input f, :password, class: "form-control"
+
+  .form-group
+    = submit "Login", class: "btn btn-primary"

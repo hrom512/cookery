@@ -4,14 +4,18 @@ defmodule CookeryWeb.AuthController do
   alias Cookery.Data.Accounts
   alias Cookery.Data.Accounts.User
 
-  def login(conn, params) do
+  def login_form(conn, _params) do
+    render conn, "login_form.html"
+  end
+
+  def login(conn, %{"user" => params}) do
     case Accounts.find_and_confirm_password(params["login"], params["password"]) do
       {:ok, user} ->
          conn
          |> Guardian.Plug.sign_in(user)
          |> redirect(to: "/admin")
       {:error, _} ->
-        render conn, "login.html"
+        render conn, "login_form.html"
     end
   end
 

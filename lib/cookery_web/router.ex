@@ -14,8 +14,9 @@ defmodule CookeryWeb.Router do
 
     get "/", PageController, :index
 
-    get "/login", AuthController, :login
-    get "/logout", AuthController, :logout
+    get "/login", AuthController, :login_form, as: :login
+    post "/login", AuthController, :login, as: :login
+    get "/logout", AuthController, :logout, as: :logout
   end
 
   forward "/admin", CookeryAdmin.Plug, [], as: :admin
