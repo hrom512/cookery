@@ -11,12 +11,15 @@
     table.table.table-hover.table-light
       thead
         tr.uppercase
+          th width="40px"
           th Name
           th Login
           th
       tbody
         = for user <- @users do
           tr
+            td
+              img src=Cookery.Avatar.url({user.avatar,user},:thumb)
             td = user.name
             td = user.login
 

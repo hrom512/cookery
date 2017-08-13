@@ -1,5 +1,7 @@
 defmodule Cookery.Data.Accounts.User do
   use Ecto.Schema
+  use Arc.Ecto.Schema
+
   import Ecto.Changeset
   alias Cookery.Data.Accounts.User
 
@@ -8,7 +10,7 @@ defmodule Cookery.Data.Accounts.User do
     field :login, :string
     field :name, :string
     field :password, :string
-    field :avatar, :string
+    field :avatar, Cookery.Avatar.Type
 
     timestamps()
   end
@@ -16,6 +18,7 @@ defmodule Cookery.Data.Accounts.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :login, :password])
+    |> cast_attachments(attrs, [:avatar])
     |> validate_required([:name, :login, :password])
     |> validate_changeset
   end

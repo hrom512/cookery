@@ -24,3 +24,7 @@
         tr
           td Login
           td = @user.login
+        tr
+          td Avatar
+          td
+            img src=Cookery.Avatar.url({@user.avatar,@user},:original)

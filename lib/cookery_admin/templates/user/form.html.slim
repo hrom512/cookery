@@ -1,9 +1,14 @@
-= form_for @changeset, @action, fn f ->
+= form_for @changeset, @action, [multipart: true], fn f ->
   .form-body
     .form-group class="#{if @changeset.action && @changeset.errors[:name] do "has-error" end}"
       = label f, :name
       = text_input f, :name, class: "form-control"
       = error_tag f, :name
+
+    .form-group class="#{if @changeset.action && @changeset.errors[:avatar] do "has-error" end}"
+      = label f, :avatar
+      = file_input f, :avatar, class: "form-control"
+      = error_tag f, :avatar
 
     .form-group class="#{if @changeset.action && @changeset.errors[:login] do "has-error" end}"
       = label f, :login

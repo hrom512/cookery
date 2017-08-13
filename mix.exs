@@ -20,7 +20,7 @@ defmodule Cookery.Mixfile do
   def application do
     [
       mod: {Cookery.Application, []},
-      extra_applications: [:logger, :runtime_tools, :comeonin]
+      extra_applications: [:logger, :runtime_tools, :comeonin, :arc_ecto]
     ]
   end
 
@@ -47,7 +47,10 @@ defmodule Cookery.Mixfile do
       # auth
       {:guardian, "~> 0.14"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12.0"}
+      {:bcrypt_elixir, "~> 0.12.0"},
+      # file upload and attachment
+      {:arc, "~> 0.8.0"},
+      {:arc_ecto, "~> 0.7.0"}
     ]
   end
 
