@@ -1,0 +1,11 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title New User
+    .actions
+      a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn,:index)
+        i.fa.fa-arrow-left
+        |  Back to list
+
+  .portlet-body.form
+    = render "form.html", Map.put(assigns, :action, user_path(@conn, :create))

@@ -1,0 +1,30 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title Listing Users
+    .actions
+      a.btn.btn-sm.btn-circle.green href=user_path(@conn,:new)
+        i.fa.fa-plus
+        |  New User
+
+  .portlet-body
+    table.table.table-hover.table-light
+      thead
+        tr.uppercase
+          th Name
+          th Login
+          th
+      tbody
+        = for user <- @users do
+          tr
+            td = user.name
+            td = user.login
+
+            td.text-right
+              a.btn.btn-xs.btn-outline.btn-circle.green href=user_path(@conn,:show,user)
+                i.fa.fa-eye
+                |  Show
+              a.btn.btn-xs.btn-outline.btn-circle.blue href=user_path(@conn,:edit,user)
+                i.fa.fa-edit
+                |  Edit
+              = link "Delete", to: user_path(@conn, :delete, user), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"

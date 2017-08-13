@@ -1,0 +1,15 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title Edit User #{@user.id}
+    .actions
+      a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn,:index)
+        i.fa.fa-arrow-left
+        |  Back to list
+      | &nbsp;
+      a.btn.btn-sm.btn-circle.blue href=user_path(@conn,:show,@user)
+        i.fa.fa-eye
+        |  Show
+
+  .portlet-body.form
+    = render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user))

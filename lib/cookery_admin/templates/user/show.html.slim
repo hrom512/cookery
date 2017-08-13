@@ -1,0 +1,26 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title User #{@user.id}
+    .actions
+      a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn,:index)
+        i.fa.fa-arrow-left
+        |  Back to list
+      | &nbsp;
+      a.btn.btn-sm.btn-circle.blue href=user_path(@conn,:edit,@user)
+        i.fa.fa-edit
+        |  Edit
+
+  .portlet-body
+    table.table.table-hover.table-light
+      thead
+        tr.uppercase
+          th width="20%" Name
+          th width="80%" Value
+      tbody
+        tr
+          td Name
+          td = @user.name
+        tr
+          td Login
+          td = @user.login

@@ -19,6 +19,7 @@ defmodule CookeryAdmin.Router do
 
     get "/", DashboardController, :index
 
+    resources "/users", UserController
     resources "/recipes", RecipeController
   end
 end

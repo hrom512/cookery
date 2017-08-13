@@ -1,0 +1,19 @@
+= form_for @changeset, @action, fn f ->
+  .form-body
+    .form-group class="#{if @changeset.action && @changeset.errors[:name] do "has-error" end}"
+      = label f, :name
+      = text_input f, :name, class: "form-control"
+      = error_tag f, :name
+
+    .form-group class="#{if @changeset.action && @changeset.errors[:login] do "has-error" end}"
+      = label f, :login
+      = text_input f, :login, class: "form-control"
+      = error_tag f, :login
+
+    .form-group class="#{if @changeset.action && @changeset.errors[:password] do "has-error" end}"
+      = label f, :password
+      = password_input f, :password, class: "form-control"
+      = error_tag f, :password
+
+  .form-actions
+    = submit "Submit", class: "btn blue"
