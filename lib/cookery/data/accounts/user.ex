@@ -8,6 +8,7 @@ defmodule Cookery.Data.Accounts.User do
     field :login, :string
     field :name, :string
     field :password, :string
+    field :avatar, :string
 
     timestamps()
   end
