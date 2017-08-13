@@ -1,0 +1,5 @@
+li.nav-item class="#{if @is_active do "active" end}"
+  a.nav-link href=@url
+    i.icon-diamond
+    span.title = @title
+    span class="#{if @is_active do "selected" end}"
