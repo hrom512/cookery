@@ -33,7 +33,6 @@ defmodule Cookery.Data.AccountsTest do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
       assert user.login == "some login"
       assert user.name == "some name"
-      assert user.password == "some password"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -46,7 +45,6 @@ defmodule Cookery.Data.AccountsTest do
       assert %User{} = user
       assert user.login == "some updated login"
       assert user.name == "some updated name"
-      assert user.password == "some updated password"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
