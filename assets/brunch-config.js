@@ -3,7 +3,11 @@ exports.config = {
   files: {
     javascripts: {
       joinTo: {
-        "js/app.js": /^js/
+        "js/app.js": [
+          /^js/,
+          "**/phoenix.js",
+          "**/phoenix_html.js"
+        ]
       }
 
       // To use a separate vendor.js bundle, specify two files path
