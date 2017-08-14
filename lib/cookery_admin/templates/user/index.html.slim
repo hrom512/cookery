@@ -19,7 +19,7 @@
         = for user <- @users do
           tr
             td
-              img src=Cookery.Avatar.url({user.avatar,user},:thumb)
+              img src=Cookery.Avatar.make_url(user,:thumb)
             td = user.name
             td = user.login
 

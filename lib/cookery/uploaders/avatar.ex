@@ -14,12 +14,21 @@ defmodule Cookery.Avatar do
   end
 
   def storage_dir(version, {file, scope}) do
-    "uploads/avatars/#{scope.id}"
+    "priv/uploads/avatars/#{scope.id}"
   end
 
   def filename(version, _) do
     version
   end
+
+  def make_url(user, version) do
+    if user.avatar do
+      "/uploads/avatars/#{user.id}/#{version}.png"
+    else
+      default_url(version, user)
+    end
+  end
+
 
   def default_url(version, _scope) do
     "/images/avatars/#{version}.png"
