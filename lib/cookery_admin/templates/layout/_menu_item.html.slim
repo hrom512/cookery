@@ -1,5 +1,8 @@
-li.nav-item class="#{if @is_active do "active" end}"
-  a.nav-link href=@url
+- is_active = String.starts_with?(@conn.request_path, @path)
+
+li.nav-item class="#{if is_active, do: "active"}"
+  a.nav-link href=@path
     i.icon-diamond
     span.title = @title
-    span class="#{if @is_active do "selected" end}"
+    = if is_active do
+      span.selected

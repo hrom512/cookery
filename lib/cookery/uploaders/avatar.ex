@@ -29,7 +29,6 @@ defmodule Cookery.Avatar do
     end
   end
 
-
   def default_url(version, _scope) do
     "/images/avatars/#{version}.png"
   end

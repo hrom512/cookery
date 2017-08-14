@@ -8,8 +8,8 @@
 
       li.heading
         h3.uppercase Resorces
-      = render "_menu_item.html", title: "Recipes", url: recipe_path(@conn,:index), is_active: String.contains?(@conn.request_path, "/recipes")
+      = render "_menu_item.html", title: "Recipes", path: recipe_path(@conn, :index), conn: @conn
 
       li.heading
         h3.uppercase System
-      = render "_menu_item.html", title: "Users", url: user_path(@conn,:index), is_active: String.contains?(@conn.request_path, "/users")
+      = render "_menu_item.html", title: "Users", path: user_path(@conn, :index), conn: @conn
