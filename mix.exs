@@ -43,7 +43,7 @@ defmodule Cookery.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       # templates
-      {:phoenix_slime, "~> 0.9.0"},
+      {:phoenix_slime, github: "slime-lang/phoenix_slime"},
       # auth
       {:guardian, "~> 0.14"},
       {:comeonin, "~> 4.0"},
