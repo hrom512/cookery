@@ -2,8 +2,8 @@
   .page-header-inner
 
     .page-logo
-      a href=dashboard_path(@conn,:index)
-        img.logo-default src=static_path(@conn,"/admin/layouts/layout/img/logo.png") alt="logo"
+      a href=dashboard_path(@conn, :index)
+        img.logo-default src=static_path(@conn, "/admin/layouts/layout/img/logo.png") alt="logo"
       .menu-toggler.sidebar-toggler
         span
 
@@ -15,17 +15,17 @@
 
         li.dropdown.dropdown-user
           a.dropdown-toggle href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"
-            img.img-circle src=Cookery.Avatar.make_url(@current_user,:thumb)
+            img.img-circle src=Cookery.Avatar.make_url(@current_user, :thumb)
             span.username.username-hide-on-mobile
               = @current_user.name
             i.fa.fa-angle-down
           ul.dropdown-menu.dropdown-menu-default
             li
-              a href=user_path(@conn,:show,@current_user)
+              a href=user_path(@conn, :show, @current_user)
                 i.icon-user
                 | My Profile
             li
-              a href=user_path(@conn,:edit,@current_user)
+              a href=user_path(@conn, :edit, @current_user)
                 i.icon-lock
                 | Change password
             li.divider

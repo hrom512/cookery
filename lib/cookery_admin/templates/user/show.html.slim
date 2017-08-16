@@ -3,11 +3,11 @@
     .caption
       .page-title User #{@user.id}
     .actions
-      a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn,:index)
+      a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn, :index)
         i.fa.fa-arrow-left
         |  Back to list
       | &nbsp;
-      a.btn.btn-sm.btn-circle.blue href=user_path(@conn,:edit,@user)
+      a.btn.btn-sm.btn-circle.blue href=user_path(@conn, :edit, @user)
         i.fa.fa-edit
         |  Edit
 
@@ -27,4 +27,4 @@
         tr
           td Avatar
           td
-            img src=Cookery.Avatar.make_url(@user,:original)
+            img src=Cookery.Avatar.make_url(@user, :original)

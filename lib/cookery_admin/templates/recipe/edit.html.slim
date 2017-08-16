@@ -3,11 +3,11 @@
     .caption
       .page-title Edit Recipe #{@recipe.id}
     .actions
-      a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn,:index)
+      a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn, :index)
         i.fa.fa-arrow-left
         |  Back to list
       | &nbsp;
-      a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn,:show,@recipe)
+      a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn, :show, @recipe)
         i.fa.fa-eye
         |  Show
 
