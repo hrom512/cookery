@@ -23,6 +23,10 @@ defmodule CookeryWeb do
       import Plug.Conn
       import CookeryWeb.Router.Helpers
       import CookeryWeb.Gettext
+
+      # access to the current user
+      import CookeryWeb.Loaders
+      plug :load_current_user
     end
   end
 

@@ -10,6 +10,23 @@ header#header.full-header
         a.retina-logo href="/"
           img src=static_path(@conn, "/template/images/logo@2x.png") alt="Canvas Logo"
 
+      = if @current_user do
+        #top-account.dropdown
+          a.btn.btn-default.dropdown-toggle href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+            i.icon-user
+            i.icon-angle-down
+          ul.dropdown-menu.dropdown-menu-right aria-labelledby="dropdownMenu1"
+            li
+              a href="#" Profile
+            li.divider role="separator"
+            li
+              a href=logout_path(@conn, :logout)
+                | Logout <i class="icon-signout"></i>
+      - else
+        #top-account
+          a.btn.btn-default href=login_path(@conn, :login)
+            | Login <i class="icon-signin"></i>
+
       nav#primary-menu
         ul
           li
