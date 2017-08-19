@@ -1,13 +1,64 @@
-h1 Login
+section#content
+  .content-wrap
+    .container.clearfix
 
-= form_for @conn, login_path(@conn, :login), [name: :user], fn f ->
-  .form-group
-    label Login
-    = text_input f, :login, class: "form-control"
+      #tab-login-register.tabs.divcenter.nobottommargin.clearfix style="max-width: 500px;"
 
-  .form-group
-    label Password
-    = password_input f, :password, class: "form-control"
+        ul.tab-nav.tab-nav2.center.clearfix
+          li.inline-block
+            a href="#tab-login" Login
+          li.inline-block
+            a href="#tab-register" Register
 
-  .form-group
-    = submit "Login", class: "btn btn-primary"
+        .tab-container
+
+          #tab-login.tab-content.clearfix
+            .panel.panel-default.nobottommargin
+              .panel-body style="padding: 40px;"
+                h3 Login to your Account
+
+                = form_for @conn, login_path(@conn, :login), [as: "user", id: "login-form", class: "nobottommargin"], fn f ->
+                  .col_full
+                    label Login
+                    = text_input f, :login, class: "form-control"
+
+                  .col_full
+                    label Password
+                    = password_input f, :password, class: "form-control"
+
+                  .col_full.nobottommargin
+                    = submit "Login", class: "button button-3d button-black nomargin", id: "login-form-submit"
+                    a.fright href="#" Forgot Password?
+
+          #tab-register.tab-content.clearfix
+            .panel.panel-default.nobottommargin
+              .panel-body style="padding: 40px;"
+                h3 Register for an Account
+
+                form id="register-form" name="register-form" class="nobottommargin" action="#" method="post"
+                  .col_full
+                    label for="register-form-name" Name:
+                    input type="text" id="register-form-name" name="register-form-name" value="" class="form-control"
+
+                  .col_full
+                    label for="register-form-email" Email Address:
+                    input type="text" id="register-form-email" name="register-form-email" value="" class="form-control"
+
+                  .col_full
+                    label for="register-form-username" Choose a Username:
+                    input type="text" id="register-form-username" name="register-form-username" value="" class="form-control"
+
+                  .col_full
+                    label for="register-form-phone" Phone:
+                    input type="text" id="register-form-phone" name="register-form-phone" value="" class="form-control"
+
+                  .col_full
+                    label for="register-form-password" Choose Password:
+                    input type="password" id="register-form-password" name="register-form-password" value="" class="form-control"
+
+                  .col_full
+                    label for="register-form-repassword" Re-enter Password:
+                    input type="password" id="register-form-repassword" name="register-form-repassword" value="" class="form-control"
+
+                  .col_full.nobottommargin
+                    button class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="register" Register Now
