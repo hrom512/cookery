@@ -9,7 +9,7 @@ defmodule CookeryWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :cookery, gzip: false,
-    only: ~w(admin css fonts images js favicon.ico robots.txt)
+    only: ~w(admin template css fonts images js favicon.ico robots.txt)
 
   plug Plug.Static, at: "uploads", from: "priv/uploads"
 

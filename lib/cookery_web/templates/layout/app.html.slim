@@ -1,28 +1,26 @@
 doctype html
-html lang="en"
+html lang="ru"
   head
-    meta charset="utf-8"
-    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta http-equiv="content-type" content="text/html; charset=utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content=""
-    meta name="author" content=""
+
+    link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/bootstrap.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/style.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/dark.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/font-icons.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/animate.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/magnific-popup.css") type="text/css"
+    link rel="stylesheet" href=static_path(@conn, "/template/css/responsive.css") type="text/css"
 
     title Hello Cookery!
-    link rel="stylesheet" href=static_path(@conn, "/css/app.css")
 
-  body
-    .container
-      header.header
-        nav role="navigation"
-          ul.nav.nav-pills.pull-right
-            li
-              a href="http://www.phoenixframework.org/docs" Get Started
-        span.logo
+  body.stretched.no-transition
+    #wrapper.clearfix
+      = render "_header.html", assigns
+      = render @view_module, @view_template, assigns
+      = render "_footer.html", assigns
 
-      p.alert.alert-info role="alert" = get_flash(@conn, :info)
-      p.alert.alert-danger role="alert" = get_flash(@conn, :error)
-
-      main role="main"
-        = render @view_module, @view_template, assigns
-
-    script src=static_path(@conn, "/js/app.js")
+    script type="text/javascript" src=static_path(@conn, "/template/js/jquery.js")
+    script type="text/javascript" src=static_path(@conn, "/template/js/plugins.js")
+    script type="text/javascript" src=static_path(@conn, "/template/js/functions.js")

@@ -1,0 +1,30 @@
+header#header.full-header
+  #header-wrap
+    .container.clearfix
+      #primary-menu-trigger
+        i.icon-reorder
+
+      #logo
+        a.standard-logo href="/"
+          img src=static_path(@conn, "/template/images/logo.png") alt="Canvas Logo"
+        a.retina-logo href="/"
+          img src=static_path(@conn, "/template/images/logo@2x.png") alt="Canvas Logo"
+
+      nav#primary-menu
+        ul
+          li
+            a href="/"
+              div Home
+          li
+            a href="/"
+              div Categories
+            ul
+              li
+                a href="/"
+                  div Category
+              li
+                a href="/"
+                  div Category
+              li
+                a href="/"
+                  div Category
