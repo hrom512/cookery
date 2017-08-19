@@ -18,6 +18,8 @@ section#content
                 h3 Login to your Account
 
                 = form_for @conn, login_path(@conn, :login), [as: "user", id: "login-form", class: "nobottommargin"], fn f ->
+                  = hidden_input f, :redirect_to, value: @redirect_to
+
                   .col_full
                     label Login
                     = text_input f, :login, class: "form-control"

@@ -4,8 +4,8 @@ defmodule CookeryWeb.AuthController do
   alias Cookery.Data.Accounts
   alias Cookery.Data.Accounts.User
 
-  def login_form(conn, _params) do
-    render conn, "login_form.html"
+  def login_form(conn, params) do
+    render conn, "login_form.html", redirect_to: redirect_to(params)
   end
 
   def login(conn, %{"user" => params}) do
@@ -13,7 +13,7 @@ defmodule CookeryWeb.AuthController do
       {:ok, user} ->
          conn
          |> Guardian.Plug.sign_in(user)
-         |> redirect(to: "/admin")
+         |> redirect(to: redirect_to(params))
       {:error, _} ->
         conn
         |> put_flash(:error, "User not found or password invalid")
@@ -29,6 +29,10 @@ defmodule CookeryWeb.AuthController do
 
   def unauthenticated(conn, params) do
     conn
-    |> redirect(to: "/login")
+    |> redirect(to: "/login?redirect_to=#{conn.request_path}")
+  end
+
+  defp redirect_to(params) do
+    params["redirect_to"] || "/"
   end
 end
