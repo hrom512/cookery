@@ -11,8 +11,6 @@ defmodule CookeryWeb.Endpoint do
     at: "/", from: :cookery, gzip: false,
     only: ~w(admin template css fonts images js favicon.ico robots.txt)
 
-  plug Plug.Static, at: "uploads", from: "priv/uploads"
-
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do

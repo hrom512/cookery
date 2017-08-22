@@ -20,7 +20,16 @@ defmodule Cookery.Mixfile do
   def application do
     [
       mod: {Cookery.Application, []},
-      extra_applications: [:logger, :runtime_tools, :comeonin, :arc_ecto]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :comeonin,
+        :arc_ecto,
+        :ex_aws,
+        :hackney,
+        :poison,
+        :sweet_xml
+      ]
     ]
   end
 
@@ -50,7 +59,12 @@ defmodule Cookery.Mixfile do
       {:bcrypt_elixir, "~> 0.12.0"},
       # file upload and attachment
       {:arc, "~> 0.8.0"},
-      {:arc_ecto, "~> 0.7.0"}
+      {:arc_ecto, "~> 0.7.0"},
+      # Amazon S3
+      {:ex_aws, "~> 1.1"},
+      {:hackney, "~> 1.6"},
+      {:poison, "~> 3.1"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 
