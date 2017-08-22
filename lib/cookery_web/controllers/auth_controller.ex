@@ -2,7 +2,6 @@ defmodule CookeryWeb.AuthController do
   use CookeryWeb, :controller
 
   alias Cookery.Data.Accounts
-  alias Cookery.Data.Accounts.User
 
   def login_form(conn, params) do
     render conn, "login_form.html", redirect_to: redirect_to(params)
@@ -17,7 +16,7 @@ defmodule CookeryWeb.AuthController do
       {:error, _} ->
         conn
         |> put_flash(:error, "User not found or password invalid")
-        |> render "login_form.html"
+        |> render("login_form.html")
     end
   end
 
@@ -27,7 +26,7 @@ defmodule CookeryWeb.AuthController do
     |> redirect(to: "/")
   end
 
-  def unauthenticated(conn, params) do
+  def unauthenticated(conn, _params) do
     conn
     |> redirect(to: "/login?redirect_to=#{conn.request_path}")
   end
