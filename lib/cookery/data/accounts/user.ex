@@ -10,6 +10,7 @@ defmodule Cookery.Data.Accounts.User do
     field :login, :string
     field :name, :string
     field :password, :string
+    field :password_confirmation, :string, virtual: true
     field :avatar, Cookery.Avatar.Type
 
     timestamps()
@@ -40,6 +41,7 @@ defmodule Cookery.Data.Accounts.User do
     |> cast(attrs, [:password])
     |> validate_required([:password])
     |> validate_length(:password, min: 6)
+    |> validate_confirmation(:password)
     |> generate_password_hash
   end
 
