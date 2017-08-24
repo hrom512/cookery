@@ -16,7 +16,7 @@ defmodule CookeryWeb.AuthController do
       {:error, _} ->
         conn
         |> put_flash(:error, "User not found or password invalid")
-        |> render("login_form.html")
+        |> render("login_form.html", redirect_to: redirect_to(params))
     end
   end
 
