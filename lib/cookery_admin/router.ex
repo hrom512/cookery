@@ -19,7 +19,11 @@ defmodule CookeryAdmin.Router do
 
     get "/", DashboardController, :index
 
-    resources "/users", UserController
+    resources "/users", UserController do
+      get "/change_password", UserController, :change_password
+      put "/update_password", UserController, :update_password
+    end
+
     resources "/recipes", RecipeController
   end
 end

@@ -1,7 +1,7 @@
 .portlet
   .portlet-title
     .caption
-      .page-title User #{@user.id}
+      .page-title #{@user.name}
     .actions
       a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn, :index)
         i.fa.fa-arrow-left
@@ -10,21 +10,20 @@
       a.btn.btn-sm.btn-circle.blue href=user_path(@conn, :edit, @user)
         i.fa.fa-edit
         |  Edit
+      | &nbsp;
+      a.btn.btn-sm.btn-circle.red href=user_user_path(@conn, :change_password, @user)
+        i.fa.fa-edit
+        |  Change password
 
   .portlet-body
     table.table.table-hover.table-light
-      thead
-        tr.uppercase
-          th width="20%" Name
-          th width="80%" Value
-      tbody
-        tr
-          td Name
-          td = @user.name
-        tr
-          td Login
-          td = @user.login
-        tr
-          td Avatar
-          td
-            img src=Cookery.Avatar.make_url(@user, :original)
+      tr
+        td Name
+        td = @user.name
+      tr
+        td Login
+        td = @user.login
+      tr
+        td Avatar
+        td
+          img src=Cookery.Avatar.make_url(@user, :original)

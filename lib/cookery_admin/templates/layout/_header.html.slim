@@ -25,7 +25,7 @@
                 i.icon-user
                 | My Profile
             li
-              a href=user_path(@conn, :edit, @current_user)
+              a href=user_user_path(@conn, :change_password, @current_user)
                 i.icon-lock
                 | Change password
             li.divider

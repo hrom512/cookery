@@ -15,10 +15,11 @@
       = text_input f, :login, class: "form-control"
       = error_tag f, :login
 
-    .form-group class="#{if @changeset.action && @changeset.errors[:password] do "has-error" end}"
-      = label f, :password
-      = password_input f, :password, class: "form-control"
-      = error_tag f, :password
+    = if @with_password do
+      .form-group class="#{if @changeset.action && @changeset.errors[:password] do "has-error" end}"
+        = label f, :password
+        = password_input f, :password, class: "form-control"
+        = error_tag f, :password
 
   .form-actions
     = submit "Submit", class: "btn blue"

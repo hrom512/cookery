@@ -18,7 +18,7 @@ defmodule Cookery.Data.Accounts do
 
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.changeset(attrs)
+    |> User.create_changeset(attrs)
     |> Repo.insert()
   end
 
@@ -28,12 +28,22 @@ defmodule Cookery.Data.Accounts do
     |> Repo.update()
   end
 
+  def update_user_password(%User{} = user, attrs) do
+    user
+    |> User.password_changeset(attrs)
+    |> Repo.update()
+  end
+
   def delete_user(%User{} = user) do
     Repo.delete(user)
   end
 
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  def change_user_password(%User{} = user) do
+    User.password_changeset(user, %{})
   end
 
   def find_and_confirm_password(login, password) do

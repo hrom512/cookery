@@ -17,24 +17,36 @@ defmodule Cookery.Data.Accounts.User do
 
   def changeset(%User{} = user, attrs) do
     user
+    |> cast(attrs, [:name, :login])
+    |> cast_attachments(attrs, [:avatar])
+    |> validate_required([:name, :login])
+    |> validate_length(:login, min: 4, max: 100)
+    |> unique_constraint(:login)
+  end
+
+  def create_changeset(%User{} = user, attrs) do
+    user
     |> cast(attrs, [:name, :login, :password])
     |> cast_attachments(attrs, [:avatar])
     |> validate_required([:name, :login, :password])
-    |> validate_changeset
+    |> validate_length(:login, min: 4, max: 100)
+    |> unique_constraint(:login)
+    |> validate_length(:password, min: 6)
+    |> generate_password_hash
+  end
+
+  def password_changeset(%User{} = user, attrs) do
+    user
+    |> cast(attrs, [:password])
+    |> validate_required([:password])
+    |> validate_length(:password, min: 6)
+    |> generate_password_hash
   end
 
   def check_password(%User{} = user, password) do
     Comeonin.Bcrypt.checkpw(password, user.password)
   end
 
-
-  defp validate_changeset(changeset) do
-    changeset
-    |> validate_length(:login, min: 4, max: 100)
-    |> unique_constraint(:login)
-    |> validate_length(:password, min: 6)
-    |> generate_password_hash
-  end
 
   defp generate_password_hash(changeset) do
     case changeset do

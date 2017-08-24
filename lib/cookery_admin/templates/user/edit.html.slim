@@ -12,4 +12,4 @@
         |  Show
 
   .portlet-body.form
-    = render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user))
+    = render "form.html", Map.merge(assigns, %{with_password: false, action: user_path(@conn, :update, @user)})
