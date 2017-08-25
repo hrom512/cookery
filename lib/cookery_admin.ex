@@ -6,8 +6,6 @@ defmodule CookeryAdmin do
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.Gettext
 
-      # ruquire auth
-      plug Guardian.Plug.EnsureAuthenticated, handler: CookeryWeb.AuthController
       # access to the current user
       import CookeryWeb.Loaders
       plug :load_current_user

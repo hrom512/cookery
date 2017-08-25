@@ -14,8 +14,12 @@ defmodule CookeryAdmin.Router do
     plug Guardian.Plug.LoadResource
   end
 
+  pipeline :require_login do
+    plug Guardian.Plug.EnsureAuthenticated, handler: CookeryWeb.AuthController
+  end
+
   scope "/", CookeryAdmin do
-    pipe_through [:browser, :browser_auth]
+    pipe_through [:browser, :browser_auth, :require_login]
 
     get "/", DashboardController, :index
 
