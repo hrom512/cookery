@@ -5,7 +5,7 @@ defmodule CookeryAdmin.RecipeController do
   alias Cookery.Data.Recipes.Recipe
 
   def index(conn, _params) do
-    recipes = Recipes.list_recipes()
+    recipes = Recipes.list_recipes_with_users()
     render(conn, "index.html", recipes: recipes)
   end
 
@@ -15,7 +15,7 @@ defmodule CookeryAdmin.RecipeController do
   end
 
   def create(conn, %{"recipe" => recipe_params}) do
-    case Recipes.create_recipe(recipe_params) do
+    case Recipes.create_recipe(conn.assigns.current_user, recipe_params) do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, "Recipe created successfully.")
@@ -26,7 +26,7 @@ defmodule CookeryAdmin.RecipeController do
   end
 
   def show(conn, %{"id" => id}) do
-    recipe = Recipes.get_recipe!(id)
+    recipe = Recipes.get_recipe_with_user!(id)
     render(conn, "show.html", recipe: recipe)
   end
 

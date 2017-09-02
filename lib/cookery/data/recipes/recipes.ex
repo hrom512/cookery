@@ -21,6 +21,11 @@ defmodule Cookery.Data.Recipes do
     Repo.all(Recipe)
   end
 
+  def list_recipes_with_users do
+    list_recipes
+    |> Repo.preload(:user)
+  end
+
   @doc """
   Gets a single recipe.
 
@@ -39,6 +44,11 @@ defmodule Cookery.Data.Recipes do
     Repo.get!(Recipe, id)
   end
 
+  def get_recipe_with_user!(id) do
+    get_recipe!(id)
+    |> Repo.preload(:user)
+  end
+
   @doc """
   Creates a recipe.
 
@@ -51,7 +61,8 @@ defmodule Cookery.Data.Recipes do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_recipe(attrs \\ %{}) do
+  def create_recipe(user, attrs \\ %{}) do
+    attrs = Dict.put(attrs, "user_id", user.id)
     %Recipe{}
     |> Recipe.changeset(attrs)
     |> Repo.insert()

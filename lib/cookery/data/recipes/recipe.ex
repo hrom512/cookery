@@ -16,7 +16,7 @@ defmodule Cookery.Data.Recipes.Recipe do
   @doc false
   def changeset(%Recipe{} = recipe, attrs) do
     recipe
-    |> cast(attrs, [:title, :description])
-    |> validate_required([:title])
+    |> cast(attrs, [:user_id, :title, :description])
+    |> validate_required([:user_id, :title])
   end
 end

@@ -13,12 +13,14 @@
         tr.uppercase
           th Title
           th Description
+          th User
           th
       tbody
         = for recipe <- @recipes do
           tr
             td = recipe.title
             td = recipe.description
+            td = recipe.user.login
 
             td.text-right
               a.btn.btn-xs.btn-outline.btn-circle.green href=recipe_path(@conn, :show, recipe)
