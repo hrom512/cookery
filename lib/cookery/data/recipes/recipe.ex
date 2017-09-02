@@ -1,6 +1,5 @@
 defmodule Cookery.Data.Recipes.Recipe do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Cookery, :schema
 
   alias Cookery.Data.Recipes.Recipe
   alias Cookery.Data.Accounts.User
