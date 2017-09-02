@@ -27,3 +27,6 @@
         tr
           td User
           td = @recipe.user.login
+        tr
+          td Created
+          td = @recipe.inserted_at |> format_datetime(@current_timezone)

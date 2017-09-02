@@ -6,9 +6,9 @@ defmodule CookeryAdmin do
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.Gettext
 
-      # access to the current user
       import CookeryWeb.Loaders
       plug :load_current_user
+      plug :load_current_timezone
     end
   end
 
@@ -26,6 +26,8 @@ defmodule CookeryAdmin do
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.ErrorHelpers
       import CookeryAdmin.Gettext
+
+      import Cookery.DateTimeHelpers
     end
   end
 

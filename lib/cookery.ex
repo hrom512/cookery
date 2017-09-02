@@ -11,6 +11,11 @@ defmodule Cookery do
     quote do
       use Ecto.Schema
       import Ecto.Changeset
+
+      @timestamps_opts [
+        type: Timex.Ecto.DateTime,
+        autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}
+      ]
     end
   end
 
