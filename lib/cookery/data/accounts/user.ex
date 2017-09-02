@@ -1,10 +1,10 @@
 defmodule Cookery.Data.Accounts.User do
   use Ecto.Schema
   use Arc.Ecto.Schema
-
   import Ecto.Changeset
-  alias Cookery.Data.Accounts.User
 
+  alias Cookery.Data.Accounts.User
+  alias Cookery.Data.Recipes.Recipe
 
   schema "users" do
     field :login, :string
@@ -12,6 +12,7 @@ defmodule Cookery.Data.Accounts.User do
     field :password, :string
     field :password_confirmation, :string, virtual: true
     field :avatar, Cookery.Avatar.Type
+    has_many :recipes, Recipe
 
     timestamps()
   end
