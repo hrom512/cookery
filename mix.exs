@@ -28,7 +28,8 @@ defmodule Cookery.Mixfile do
         :ex_aws,
         :hackney,
         :poison,
-        :sweet_xml
+        :sweet_xml,
+        :timex_ecto
       ]
     ]
   end
@@ -64,7 +65,10 @@ defmodule Cookery.Mixfile do
       {:ex_aws, "~> 1.1"},
       {:hackney, "~> 1.6"},
       {:poison, "~> 3.1"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+      # Date and time
+      {:timex, "~> 3.0"},
+      {:timex_ecto, "~> 3.0"}
     ]
   end
 
