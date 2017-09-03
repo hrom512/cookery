@@ -8,6 +8,7 @@ defmodule Cookery.Data.Accounts.User do
   schema "users" do
     field :name, :string
     field :timezone, :string
+    field :is_admin, :boolean, default: false
     field :login, :string
     field :password, :string
     field :password_confirmation, :string, virtual: true

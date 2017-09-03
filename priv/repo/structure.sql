@@ -88,7 +88,8 @@ CREATE TABLE users (
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     avatar character varying(255),
-    timezone character varying(255)
+    timezone character varying(255),
+    is_admin boolean DEFAULT false NOT NULL
 );
 
 
@@ -168,5 +169,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838);
 
