@@ -51,14 +51,14 @@ defmodule CookeryAdmin.UserController do
     end
   end
 
-  def change_password(conn, %{"user_id" => user_id}) do
-    user = Accounts.get_user!(user_id)
+  def change_password(conn, %{"id" => id}) do
+    user = Accounts.get_user!(id)
     changeset = Accounts.change_user_password(user)
     render(conn, "change_password.html", user: user, changeset: changeset)
   end
 
-  def update_password(conn, %{"user_id" => user_id, "user" => user_params}) do
-    user = Accounts.get_user!(user_id)
+  def update_password(conn, %{"id" => id, "user" => user_params}) do
+    user = Accounts.get_user!(id)
 
     case Accounts.update_user_password(user, user_params) do
       {:ok, user} ->
