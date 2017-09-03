@@ -58,6 +58,7 @@ defmodule Cookery.Mixfile do
       {:guardian, "~> 0.14"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12.0"},
+      {:canary, "~> 1.1.1"},
       # file upload and attachment
       {:arc, "~> 0.8.0"},
       {:arc_ecto, "~> 0.7.0"},
