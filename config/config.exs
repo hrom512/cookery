@@ -39,6 +39,11 @@ config :guardian, Guardian,
     "kty" => "oct"
   }
 
+config :canary,
+  repo: Cookery.Repo,
+  unauthorized_handler: {CookeryWeb.ErrorController, :unauthorized},
+  not_found_handler: {CookeryWeb.ErrorController, :not_found}
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

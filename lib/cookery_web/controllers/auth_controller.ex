@@ -26,11 +26,6 @@ defmodule CookeryWeb.AuthController do
     |> redirect(to: "/")
   end
 
-  def unauthenticated(conn, _params) do
-    conn
-    |> redirect(to: "/login?redirect_to=#{conn.request_path}")
-  end
-
   defp redirect_to(params) do
     params["redirect_to"] || "/"
   end

@@ -4,6 +4,8 @@ defmodule CookeryAdmin.UserController do
   alias Cookery.Data.Accounts
   alias Cookery.Data.Accounts.User
 
+  plug :load_and_authorize_resource, model: User
+
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)

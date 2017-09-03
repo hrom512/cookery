@@ -4,6 +4,8 @@ defmodule CookeryAdmin.RecipeController do
   alias Cookery.Data.Recipes
   alias Cookery.Data.Recipes.Recipe
 
+  plug :load_and_authorize_resource, model: Recipe
+
   def index(conn, _params) do
     recipes = Recipes.list_recipes_with_users()
     render(conn, "index.html", recipes: recipes)

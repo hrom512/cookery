@@ -15,7 +15,7 @@ defmodule CookeryAdmin.Router do
   end
 
   pipeline :require_login do
-    plug Guardian.Plug.EnsureAuthenticated, handler: CookeryWeb.AuthController
+    plug Guardian.Plug.EnsureAuthenticated, handler: CookeryWeb.ErrorController
   end
 
   scope "/", CookeryAdmin do

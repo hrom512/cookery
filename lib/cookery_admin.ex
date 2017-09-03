@@ -6,6 +6,8 @@ defmodule CookeryAdmin do
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.Gettext
 
+      import Canary.Plugs
+
       import CookeryWeb.Loaders
       plug :load_current_user
       plug :load_current_timezone
