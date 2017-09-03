@@ -6,8 +6,9 @@ defmodule Cookery.Data.Accounts.User do
   alias Cookery.Data.Recipes.Recipe
 
   schema "users" do
-    field :login, :string
     field :name, :string
+    field :timezone, :string
+    field :login, :string
     field :password, :string
     field :password_confirmation, :string, virtual: true
     field :avatar, Cookery.Avatar.Type
@@ -18,7 +19,7 @@ defmodule Cookery.Data.Accounts.User do
 
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :login])
+    |> cast(attrs, [:name, :timezone, :login])
     |> cast_attachments(attrs, [:avatar])
     |> validate_required([:name, :login])
     |> validate_length(:login, min: 4, max: 100)
@@ -28,7 +29,7 @@ defmodule Cookery.Data.Accounts.User do
   # with password and without avatar
   def create_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :login, :password])
+    |> cast(attrs, [:name, :timezone, :login, :password])
     |> validate_required([:name, :login, :password])
     |> validate_length(:login, min: 4, max: 100)
     |> unique_constraint(:login)

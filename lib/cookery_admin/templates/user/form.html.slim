@@ -11,6 +11,11 @@
         = file_input f, :avatar, class: "form-control"
         = error_tag f, :avatar
 
+    .form-group class="#{if @changeset.action && @changeset.errors[:timezone] do "has-error" end}"
+      = label f, :timezone
+      = text_input f, :timezone, class: "form-control"
+      = error_tag f, :timezone
+
     .form-group class="#{if @changeset.action && @changeset.errors[:login] do "has-error" end}"
       = label f, :login
       = text_input f, :login, class: "form-control"
