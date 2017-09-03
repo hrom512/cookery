@@ -82,6 +82,8 @@ defmodule Cookery.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "ecto.migrate": ["ecto.migrate", "ecto.dump"],
+      "ecto.rollback": ["ecto.rollback", "ecto.dump"],
       "test": ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
