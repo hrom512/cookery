@@ -61,7 +61,7 @@ defmodule Cookery.Data.Recipes do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_recipe(user, attrs \\ %{}) do
+  def create_recipe(attrs, user) do
     attrs = Dict.put(attrs, "user_id", user.id)
     %Recipe{}
     |> Recipe.changeset(attrs)

@@ -15,7 +15,7 @@ defmodule CookeryAdmin.RecipeController do
   end
 
   def create(conn, %{"recipe" => recipe_params}) do
-    case Recipes.create_recipe(conn.assigns.current_user, recipe_params) do
+    case Recipes.create_recipe(recipe_params, conn.assigns.current_user) do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, "Recipe created successfully.")

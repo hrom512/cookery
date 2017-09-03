@@ -2,19 +2,25 @@ defmodule Cookery.Data.RecipesTest do
   use Cookery.DataCase
 
   alias Cookery.Data.Recipes
+  alias Cookery.Data.Accounts
 
   describe "recipes" do
     alias Cookery.Data.Recipes.Recipe
 
-    @valid_attrs %{description: "some description", title: "some title"}
-    @update_attrs %{description: "some updated description", title: "some updated title"}
-    @invalid_attrs %{description: nil, title: nil}
+    @valid_attrs %{"description" => "some description", "title" => "some title"}
+    @update_attrs %{"description" => "some updated description", "title" => "some updated title"}
+    @invalid_attrs %{"description" => nil, "title" => nil}
+
+    def user_fixture do
+      {:ok, user} = Accounts.create_user(%{name: "Admin", login: "admin", password: "123456"})
+      user
+    end
 
     def recipe_fixture(attrs \\ %{}) do
       {:ok, recipe} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Recipes.create_recipe()
+        |> Recipes.create_recipe(user_fixture)
 
       recipe
     end
@@ -29,14 +35,14 @@ defmodule Cookery.Data.RecipesTest do
       assert Recipes.get_recipe!(recipe.id) == recipe
     end
 
-    test "create_recipe/1 with valid data creates a recipe" do
-      assert {:ok, %Recipe{} = recipe} = Recipes.create_recipe(@valid_attrs)
+    test "create_recipe/2 with valid data creates a recipe" do
+      assert {:ok, %Recipe{} = recipe} = Recipes.create_recipe(@valid_attrs, user_fixture)
       assert recipe.description == "some description"
       assert recipe.title == "some title"
     end
 
-    test "create_recipe/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Recipes.create_recipe(@invalid_attrs)
+    test "create_recipe/2 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Recipes.create_recipe(@invalid_attrs, user_fixture)
     end
 
     test "update_recipe/2 with valid data updates the recipe" do
