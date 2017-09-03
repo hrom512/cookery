@@ -43,7 +43,7 @@ CREATE TABLE recipes (
     description text,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_id integer
+    user_id integer NOT NULL
 );
 
 
@@ -168,5 +168,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339);
 
