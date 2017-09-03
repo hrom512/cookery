@@ -20,6 +20,7 @@ defmodule CookeryWeb.Loaders do
   end
 
   defp default_timezone do
-    Timezone.get("Europe/Moscow")
+    Application.get_env(:timezone, :default)
+    |> Timezone.get()
   end
 end

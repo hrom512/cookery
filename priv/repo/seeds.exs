@@ -7,8 +7,7 @@ alias Cookery.Data.Recipes
 {:ok, admin} = Accounts.create_user(%{
   name: "Admin",
   login: "admin",
-  password: "123456",
-  timezone: "Europe/Moscow"
+  password: "123456"
 })
 {:ok, vasia} = Accounts.create_user(%{
   name: "Вася Пупкин",
