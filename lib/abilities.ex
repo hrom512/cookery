@@ -18,6 +18,10 @@ defimpl Canada.Can, for: User do
   def can?(%User{}, :index, Recipe), do: true
   def can?(%User{}, :show, %Recipe{}), do: true
 
+  # User can create recipes
+  def can?(%User{}, :new, Recipe), do: true
+  def can?(%User{}, :create, Recipe), do: true
+
   # Deny another actions
   def can?(%User{}, _, _), do: false
 
