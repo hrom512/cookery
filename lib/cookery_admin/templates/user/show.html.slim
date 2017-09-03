@@ -21,11 +21,14 @@
         td Name
         td = @user.name
       tr
-        td Timezone
-        td = @user.timezone
-      tr
         td Login
         td = @user.login
+      tr
+        td Admin
+        td = @user.is_admin
+      tr
+        td Timezone
+        td = @user.timezone
       tr
         td Avatar
         td
