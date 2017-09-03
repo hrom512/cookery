@@ -7,7 +7,8 @@ use Mix.Config
 
 # General application configuration
 config :cookery,
-  ecto_repos: [Cookery.Repo]
+  ecto_repos: [Cookery.Repo],
+  default_timezone: "Europe/Moscow"
 
 # Configures the endpoint
 config :cookery, CookeryWeb.Endpoint,
@@ -37,9 +38,6 @@ config :guardian, Guardian,
     "k" => "HsXehGdPXw65vqrMHygNabePeKkDQGyh9k2kdxqi4_KMB1OaDY_9IgANsd9XVh-nFENhCT_V5YyXcacxAYhV5Q",
     "kty" => "oct"
   }
-
-config :timezone,
-  default: "Europe/Moscow"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
