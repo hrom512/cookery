@@ -18,39 +18,58 @@ defmodule Cookery.Data.Accounts.User do
     timestamps()
   end
 
-  def changeset(%User{} = user, attrs) do
+  def admin_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :timezone, :login])
-    |> cast_attachments(attrs, [:avatar])
-    |> validate_required([:name, :login])
-    |> validate_length(:login, min: 4, max: 100)
-    |> unique_constraint(:login)
+    |> create_changeset(attrs)
+    |> cast(attrs, [:is_admin])
   end
 
-  # with password and without avatar
   def create_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :timezone, :login, :password])
-    |> validate_required([:name, :login, :password])
-    |> validate_length(:login, min: 4, max: 100)
-    |> unique_constraint(:login)
-    |> validate_length(:password, min: 6)
-    |> generate_password_hash
+    |> with_name_and_timezone(attrs)
+    |> with_login(attrs)
+    |> with_password(attrs)
+  end
+
+  def update_changeset(%User{} = user, attrs) do
+    user
+    |> with_name_and_timezone(attrs)
+    |> with_login(attrs)
+    |> cast_attachments(attrs, [:avatar])
   end
 
   def password_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:password])
-    |> validate_required([:password])
-    |> validate_length(:password, min: 6)
+    |> with_password(attrs)
     |> validate_confirmation(:password)
-    |> generate_password_hash
   end
 
   def check_password(%User{} = user, password) do
     Comeonin.Bcrypt.checkpw(password, user.password)
   end
 
+
+  defp with_name_and_timezone(changeset, attrs) do
+    changeset
+    |> cast(attrs, [:name, :timezone])
+    |> validate_required([:name])
+  end
+
+  defp with_login(changeset, attrs) do
+    changeset
+    |> cast(attrs, [:login])
+    |> validate_required([:login])
+    |> validate_length(:login, min: 4, max: 100)
+    |> unique_constraint(:login)
+  end
+
+  defp with_password(changeset, attrs) do
+    changeset
+    |> cast(attrs, [:password])
+    |> validate_required([:password])
+    |> validate_length(:password, min: 6)
+    |> generate_password_hash
+  end
 
   defp generate_password_hash(changeset) do
     case changeset do

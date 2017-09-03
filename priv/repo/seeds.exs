@@ -4,12 +4,15 @@
 alias Cookery.Data.Accounts
 alias Cookery.Data.Recipes
 
-{:ok, admin} = Accounts.create_user(%{
+# Admin
+{:ok, admin} = Accounts.create_admin(%{
   name: "Admin",
   login: "admin",
   password: "123456",
   is_admin: true
 })
+
+# Users
 {:ok, vasia} = Accounts.create_user(%{
   name: "Вася Пупкин",
   login: "vasia",
@@ -23,6 +26,7 @@ alias Cookery.Data.Recipes
   timezone: "Europe/Warsaw"
 })
 
+# Avatars
 Accounts.update_user(vasia, %{
   avatar: %Plug.Upload{
     content_type: "image/jpeg",
@@ -38,6 +42,7 @@ Accounts.update_user(ivan, %{
   }
 })
 
+# Recipes
 Recipes.create_recipe(%{
   "title" => "Бутерброды с семгой",
   "description" => "Пальчики оближешь"
