@@ -9,6 +9,17 @@ defmodule CookeryWeb.Loaders do
 
   def load_current_timezone(conn, _opts) do
     conn
-    |> assign(:current_timezone, Timezone.get("Europe/Moscow"))
+    |> assign(:current_timezone, user_timezone(conn.assigns.current_user))
+  end
+
+  defp user_timezone(user) do
+    case Timezone.get(user.timezone) do
+      {:error, _} -> default_timezone
+      timezone -> timezone
+    end
+  end
+
+  defp default_timezone do
+    Timezone.get("Europe/Moscow")
   end
 end

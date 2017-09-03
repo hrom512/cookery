@@ -4,9 +4,24 @@
 alias Cookery.Data.Accounts
 alias Cookery.Data.Recipes
 
-{:ok, admin} = Accounts.create_user(%{name: "Admin", login: "admin", password: "123456"})
-{:ok, vasia} = Accounts.create_user(%{name: "Вася Пупкин", login: "vasia", password: "123456"})
-{:ok, ivan} = Accounts.create_user(%{name: "Иван Петров", login: "ivan", password: "123456"})
+{:ok, admin} = Accounts.create_user(%{
+  name: "Admin",
+  login: "admin",
+  password: "123456",
+  timezone: "Europe/Moscow"
+})
+{:ok, vasia} = Accounts.create_user(%{
+  name: "Вася Пупкин",
+  login: "vasia",
+  password: "123456",
+  timezone: "Europe/London"
+})
+{:ok, ivan} = Accounts.create_user(%{
+  name: "Иван Петров",
+  login: "ivan",
+  password: "123456",
+  timezone: "Europe/Warsaw"
+})
 
 Accounts.update_user(vasia, %{
   avatar: %Plug.Upload{
@@ -23,19 +38,19 @@ Accounts.update_user(ivan, %{
   }
 })
 
-Recipes.create_recipe(vasia, %{
+Recipes.create_recipe(%{
   "title" => "Бутерброды с семгой",
   "description" => "Пальчики оближешь"
-})
-Recipes.create_recipe(vasia, %{
+}, vasia)
+Recipes.create_recipe(%{
   "title" => "Баклажаны по-китайски",
   "description" => "Запеченые баклажаны под острым соусом"
-})
-Recipes.create_recipe(vasia, %{
+}, vasia)
+Recipes.create_recipe(%{
   "title" => "Оджахури по-грузински",
   "description" => "Мясо, овощи и арматные травы в мультварке"
-})
-Recipes.create_recipe(ivan, %{
+}, vasia)
+Recipes.create_recipe(%{
   "title" => "Яичница с помидором",
   "description" => "Когда в холодильнике пусто"
-})
+}, ivan)
