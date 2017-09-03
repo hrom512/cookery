@@ -8,4 +8,4 @@
         |  Back to list
 
   .portlet-body.form
-    = render "form.html", Map.merge(assigns, %{with_password: true, action: user_path(@conn, :create)})
+    = render "form.html", Map.merge(assigns, %{password: true, avatar: false, action: user_path(@conn, :create)})

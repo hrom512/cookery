@@ -25,10 +25,10 @@ defmodule Cookery.Data.Accounts.User do
     |> unique_constraint(:login)
   end
 
+  # with password and without avatar
   def create_changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :login, :password])
-    |> cast_attachments(attrs, [:avatar])
     |> validate_required([:name, :login, :password])
     |> validate_length(:login, min: 4, max: 100)
     |> unique_constraint(:login)
