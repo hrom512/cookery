@@ -34,6 +34,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: categories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    parent_id integer,
+    name character varying(255) NOT NULL,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
 -- Name: recipes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -116,6 +148,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::regclass);
 
 
@@ -124,6 +163,14 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
 
 
 --
@@ -151,10 +198,25 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: categories_parent_id_name_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX categories_parent_id_name_index ON categories USING btree (parent_id, name);
+
+
+--
 -- Name: recipes_user_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX recipes_user_id_index ON recipes USING btree (user_id);
+
+
+--
+-- Name: categories_parent_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_parent_id_fkey FOREIGN KEY (parent_id) REFERENCES categories(id);
 
 
 --
@@ -169,5 +231,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033);
 
