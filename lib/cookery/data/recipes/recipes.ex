@@ -7,6 +7,7 @@ defmodule Cookery.Data.Recipes do
   alias Cookery.Repo
 
   alias Cookery.Data.Recipes.Recipe
+  alias Cookery.Data.Recipes.Category
 
   @doc """
   Returns the list of recipes.
@@ -22,8 +23,12 @@ defmodule Cookery.Data.Recipes do
   end
 
   def list_recipes_with_users do
-    list_recipes
+    list_recipes()
     |> Repo.preload(:user)
+  end
+
+  def list_categories do
+    Repo.all(Category)
   end
 
   @doc """
@@ -49,6 +54,10 @@ defmodule Cookery.Data.Recipes do
     |> Repo.preload(:user)
   end
 
+  def get_category!(id) do
+    Repo.get!(Category, id)
+  end
+
   @doc """
   Creates a recipe.
 
@@ -62,9 +71,15 @@ defmodule Cookery.Data.Recipes do
 
   """
   def create_recipe(attrs, user) do
-    attrs = Dict.put(attrs, "user_id", user.id)
+    attrs = Map.put(attrs, "user_id", user.id)
     %Recipe{}
     |> Recipe.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def create_category(attrs) do
+    %Category{}
+    |> Category.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -86,6 +101,12 @@ defmodule Cookery.Data.Recipes do
     |> Repo.update()
   end
 
+  def update_category(%Category{} = category, attrs) do
+    category
+    |> Category.changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a Recipe.
 
@@ -102,6 +123,10 @@ defmodule Cookery.Data.Recipes do
     Repo.delete(recipe)
   end
 
+  def delete_category(%Category{} = category) do
+    Repo.delete(category)
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking recipe changes.
 
@@ -113,5 +138,9 @@ defmodule Cookery.Data.Recipes do
   """
   def change_recipe(%Recipe{} = recipe) do
     Recipe.changeset(recipe, %{})
+  end
+
+  def change_category(%Category{} = category) do
+    Category.changeset(category, %{})
   end
 end
