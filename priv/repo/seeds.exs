@@ -4,6 +4,18 @@
 alias Cookery.Data.Accounts
 alias Cookery.Data.Recipes
 
+defmodule Seeds do
+  def set_avatar(user, filename) do
+    Accounts.update_user(user, %{
+      avatar: %Plug.Upload{
+        content_type: "image/jpeg",
+        filename: filename,
+        path: Path.join([Application.app_dir(:cookery, "priv"), "repo", "seeds", "avatars", filename])
+      }
+    })
+  end
+end
+
 # Admin
 {:ok, admin} = Accounts.create_admin(%{
   name: "Admin",
@@ -27,20 +39,8 @@ alias Cookery.Data.Recipes
 })
 
 # Avatars
-Accounts.update_user(vasia, %{
-  avatar: %Plug.Upload{
-    content_type: "image/jpeg",
-    filename: "vasia.jpg",
-    path: Path.join([Application.app_dir(:cookery, "priv"), "repo", "seeds", "avatars", "vasia.jpg"])
-  }
-})
-Accounts.update_user(ivan, %{
-  avatar: %Plug.Upload{
-    content_type: "image/jpeg",
-    filename: "ivan.jpg",
-    path: Path.join([Application.app_dir(:cookery, "priv"), "repo", "seeds", "avatars", "ivan.jpg"])
-  }
-})
+Seeds.set_avatar(vasia, "vasia.jpg")
+Seeds.set_avatar(ivan, "ivan.jpg")
 
 # Recipes
 Recipes.create_recipe(%{
