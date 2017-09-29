@@ -38,8 +38,8 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE categories (
-    id integer NOT NULL,
-    parent_id integer,
+    id bigint NOT NULL,
+    parent_id bigint,
     name character varying(255) NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -70,7 +70,7 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 --
 
 CREATE TABLE recipes (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     title character varying(255) NOT NULL,
     description text,
     inserted_at timestamp without time zone NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE TABLE users (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     name character varying(255) NOT NULL,
     login character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
