@@ -14,6 +14,12 @@ defmodule Seeds do
       }
     })
   end
+
+  def create_subcategories(parent, names) do
+    Enum.map names, fn name ->
+      Recipes.create_category(%{parent_id: parent.id, name: name})
+    end
+  end
 end
 
 # Admin
@@ -41,6 +47,14 @@ end
 # Avatars
 Seeds.set_avatar(vasia, "vasia.jpg")
 Seeds.set_avatar(ivan, "ivan.jpg")
+
+# Categories
+{:ok, hot_dishes} = Recipes.create_category(%{name: "Горячие блюда"})
+{:ok, soups} = Recipes.create_category(%{name: "Супы"})
+{:ok, salads} = Recipes.create_category(%{name: "Салаты"})
+Seeds.create_subcategories(hot_dishes, ["Каша", "Плов", "Запеканки"])
+Seeds.create_subcategories(soups, ["Борщ", "Грибной суп", "Гороховый суп"])
+Seeds.create_subcategories(salads, ["Салат из курицы", "Салат из помидоров", "Винегрет"])
 
 # Recipes
 Recipes.create_recipe(%{
