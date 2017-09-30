@@ -57,19 +57,25 @@ Seeds.create_subcategories(soups, ["Борщ", "Грибной суп", "Гор�
 Seeds.create_subcategories(salads, ["Салат из курицы", "Салат из помидоров", "Винегрет"])
 
 # Recipes
-Recipes.create_recipe(%{
+{:ok, recipe1} = Recipes.create_recipe(%{
   "title" => "Бутерброды с семгой",
   "description" => "Пальчики оближешь"
 }, vasia)
-Recipes.create_recipe(%{
+{:ok, recipe2} = Recipes.create_recipe(%{
   "title" => "Баклажаны по-китайски",
   "description" => "Запеченые баклажаны под острым соусом"
 }, vasia)
-Recipes.create_recipe(%{
+{:ok, recipe3} = Recipes.create_recipe(%{
   "title" => "Оджахури по-грузински",
   "description" => "Мясо, овощи и арматные травы в мультварке"
 }, vasia)
-Recipes.create_recipe(%{
+{:ok, recipe4} = Recipes.create_recipe(%{
   "title" => "Яичница с помидором",
   "description" => "Когда в холодильнике пусто"
 }, ivan)
+
+# Assign recipes with categories
+Recipes.update_recipe_categories(recipe1, [hot_dishes])
+Recipes.update_recipe_categories(recipe2, [hot_dishes])
+Recipes.update_recipe_categories(recipe3, [hot_dishes])
+Recipes.update_recipe_categories(recipe4, [hot_dishes])

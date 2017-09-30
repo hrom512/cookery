@@ -107,6 +107,14 @@ defmodule Cookery.Data.Recipes do
     |> Repo.update()
   end
 
+  def update_recipe_categories(recipe, categories) do
+    recipe
+      |> Repo.preload(:categories)
+      |> Ecto.Changeset.change()
+      |> Ecto.Changeset.put_assoc(:categories, categories)
+      |> Repo.update!()
+  end
+
   @doc """
   Deletes a Recipe.
 

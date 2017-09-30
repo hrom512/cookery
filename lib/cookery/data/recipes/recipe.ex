@@ -9,7 +9,9 @@ defmodule Cookery.Data.Recipes.Recipe do
     field :description, :string
     field :title, :string
     belongs_to :user, User
-    many_to_many :categories, Category, join_through: "recipes_categories"
+    many_to_many :categories, Category,
+      join_through: "recipes_categories",
+      on_replace: :delete
 
     timestamps()
   end
