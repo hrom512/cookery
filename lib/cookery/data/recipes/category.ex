@@ -1,7 +1,7 @@
 defmodule Cookery.Data.Recipes.Category do
   use Cookery, :schema
 
-  use EctoMaterializedPath
+  use EctoMaterializedPath, column_name: "materialized_path"
 
   alias Cookery.Data.Recipes
   alias Cookery.Data.Recipes.Category
@@ -9,7 +9,7 @@ defmodule Cookery.Data.Recipes.Category do
 
   schema "categories" do
     field :name, :string
-    field :path, EctoMaterializedPath.Path, default: []
+    field :materialized_path, EctoMaterializedPath.Path, default: []
     belongs_to :parent, Category
     many_to_many :recipes, Recipe, join_through: "recipes_categories"
 
@@ -28,7 +28,7 @@ defmodule Cookery.Data.Recipes.Category do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{parent_id: parent_id}} ->
         parent = Recipes.get_category!(parent_id)
-        EctoMaterializedPath.make_child_of(changeset, parent, :path)
+        EctoMaterializedPath.make_child_of(changeset, parent, :materialized_path)
       _ ->
         changeset
     end

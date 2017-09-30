@@ -3,7 +3,7 @@ defmodule Cookery.Repo.Migrations.AddMaterializedPathToCategories do
 
   def change do
     alter table(:categories) do
-      add :path, {:array, :integer}, null: false, default: []
+      add :materialized_path, {:array, :integer}, null: false, default: []
     end
   end
 end

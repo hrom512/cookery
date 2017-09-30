@@ -43,7 +43,7 @@ CREATE TABLE categories (
     name character varying(255) NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    path integer[] DEFAULT ARRAY[]::integer[] NOT NULL
+    materialized_path integer[] DEFAULT ARRAY[]::integer[] NOT NULL
 );
 
 
