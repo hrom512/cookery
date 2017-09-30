@@ -80,6 +80,38 @@ CREATE TABLE recipes (
 
 
 --
+-- Name: recipes_categories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE recipes_categories (
+    id bigint NOT NULL,
+    recipe_id bigint NOT NULL,
+    category_id bigint NOT NULL,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: recipes_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE recipes_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: recipes_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE recipes_categories_id_seq OWNED BY recipes_categories.id;
+
+
+--
 -- Name: recipes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -162,6 +194,13 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY recipes_categories ALTER COLUMN id SET DEFAULT nextval('recipes_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -171,6 +210,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY categories
     ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY recipes_categories
+    ADD CONSTRAINT recipes_categories_pkey PRIMARY KEY (id);
 
 
 --
@@ -205,6 +252,13 @@ CREATE UNIQUE INDEX categories_parent_id_name_index ON categories USING btree (p
 
 
 --
+-- Name: recipes_categories_recipe_id_category_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX recipes_categories_recipe_id_category_id_index ON recipes_categories USING btree (recipe_id, category_id);
+
+
+--
 -- Name: recipes_user_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -220,6 +274,22 @@ ALTER TABLE ONLY categories
 
 
 --
+-- Name: recipes_categories_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY recipes_categories
+    ADD CONSTRAINT recipes_categories_category_id_fkey FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: recipes_categories_recipe_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY recipes_categories
+    ADD CONSTRAINT recipes_categories_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES recipes(id);
+
+
+--
 -- Name: recipes_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -231,5 +301,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558);
 

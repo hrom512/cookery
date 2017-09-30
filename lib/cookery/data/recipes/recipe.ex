@@ -2,12 +2,14 @@ defmodule Cookery.Data.Recipes.Recipe do
   use Cookery, :schema
 
   alias Cookery.Data.Recipes.Recipe
+  alias Cookery.Data.Recipes.Category
   alias Cookery.Data.Accounts.User
 
   schema "recipes" do
     field :description, :string
     field :title, :string
     belongs_to :user, User
+    many_to_many :categories, Category, join_through: "recipes_categories"
 
     timestamps()
   end

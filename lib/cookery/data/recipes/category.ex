@@ -3,10 +3,12 @@ defmodule Cookery.Data.Recipes.Category do
 
   alias Cookery.Repo
   alias Cookery.Data.Recipes.Category
+  alias Cookery.Data.Recipes.Recipe
 
   schema "categories" do
     field :name, :string
     belongs_to :parent, Category
+    many_to_many :recipes, Recipe, join_through: "recipes_categories"
 
     timestamps()
   end
