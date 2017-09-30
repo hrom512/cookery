@@ -42,7 +42,8 @@ CREATE TABLE categories (
     parent_id bigint,
     name character varying(255) NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    path integer[] DEFAULT ARRAY[]::integer[] NOT NULL
 );
 
 
@@ -299,5 +300,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558), (20170930194510);
 

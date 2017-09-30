@@ -1,11 +1,14 @@
 defmodule Cookery.Data.Recipes.Category do
   use Cookery, :schema
 
+  use EctoMaterializedPath
+
   alias Cookery.Data.Recipes.Category
   alias Cookery.Data.Recipes.Recipe
 
   schema "categories" do
     field :name, :string
+    field :path, EctoMaterializedPath.Path, default: []
     belongs_to :parent, Category
     many_to_many :recipes, Recipe, join_through: "recipes_categories"
 

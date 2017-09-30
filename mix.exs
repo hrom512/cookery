@@ -69,7 +69,9 @@ defmodule Cookery.Mixfile do
       {:sweet_xml, "~> 0.6"},
       # Date and time
       {:timex, "~> 3.0"},
-      {:timex_ecto, "~> 3.0"}
+      {:timex_ecto, "~> 3.0"},
+      # Tree structures
+      {:ecto_materialized_path, "~> 0.1.0"}
     ]
   end
 
