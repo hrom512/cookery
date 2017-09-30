@@ -14,7 +14,7 @@ defmodule CookeryWeb.Loaders do
 
   defp user_timezone(user) do
     case Timezone.get(user.timezone) do
-      {:error, _} -> default_timezone
+      {:error, _} -> default_timezone()
       timezone -> timezone
     end
   end
