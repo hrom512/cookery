@@ -3,6 +3,7 @@ defmodule Cookery.Data.Recipes.Category do
 
   use EctoMaterializedPath
 
+  alias Cookery.Data.Recipes
   alias Cookery.Data.Recipes.Category
   alias Cookery.Data.Recipes.Recipe
 
@@ -20,5 +21,16 @@ defmodule Cookery.Data.Recipes.Category do
     |> cast(attrs, [:parent_id, :name])
     |> validate_required([:name])
     |> unique_constraint(:name, name: :categories_parent_id_name_index)
+    |> set_materialized_path()
+  end
+
+  defp set_materialized_path(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{parent_id: parent_id}} ->
+        parent = Recipes.get_category!(parent_id)
+        EctoMaterializedPath.make_child_of(changeset, parent, :path)
+      _ ->
+        changeset
+    end
   end
 end
