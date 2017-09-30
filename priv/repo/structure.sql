@@ -86,9 +86,7 @@ CREATE TABLE recipes (
 CREATE TABLE recipes_categories (
     id bigint NOT NULL,
     recipe_id bigint NOT NULL,
-    category_id bigint NOT NULL,
-    inserted_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    category_id bigint NOT NULL
 );
 
 

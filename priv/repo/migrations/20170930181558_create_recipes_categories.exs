@@ -5,8 +5,6 @@ defmodule Cookery.Repo.Migrations.CreateRecipesCategories do
     create table(:recipes_categories) do
       add :recipe_id, references(:recipes), null: false
       add :category_id, references(:categories), null: false
-
-      timestamps()
     end
 
     create unique_index(:recipes_categories, [:recipe_id, :category_id])
