@@ -71,7 +71,7 @@ defmodule Cookery.Mixfile do
       {:timex, "~> 3.0"},
       {:timex_ecto, "~> 3.0"},
       # Tree structures
-      {:ecto_materialized_path, "~> 0.1.0"}
+      {:ecto_materialized_path, github: "asiniy/ecto_materialized_path"}
     ]
   end
 
