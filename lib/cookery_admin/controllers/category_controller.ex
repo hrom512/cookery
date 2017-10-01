@@ -7,7 +7,7 @@ defmodule CookeryAdmin.CategoryController do
   plug :load_and_authorize_resource, model: Category
 
   def index(conn, _params) do
-    categories = Recipes.list_categories()
+    categories = Recipes.categories_tree()
     render(conn, "index.html", categories: categories)
   end
 

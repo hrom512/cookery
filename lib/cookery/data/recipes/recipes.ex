@@ -31,6 +31,11 @@ defmodule Cookery.Data.Recipes do
     Repo.all(Category)
   end
 
+  def categories_tree do
+    list_categories()
+    |> Category.arrange()
+  end
+
   @doc """
   Gets a single recipe.
 

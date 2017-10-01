@@ -8,25 +8,4 @@
         |  New Category
 
   .portlet-body
-    table.table.table-hover.table-light
-      thead
-        tr.uppercase
-          th Name
-          th Parent
-          th Created
-          th
-      tbody
-        = for category <- @categories do
-          tr
-            td = category.name
-            td = category.parent_id
-            td = category.inserted_at |> format_datetime(@current_timezone)
-
-            td.text-right
-              a.btn.btn-xs.btn-outline.btn-circle.green href=category_path(@conn, :show, category)
-                i.fa.fa-eye
-                |  Show
-              a.btn.btn-xs.btn-outline.btn-circle.blue href=category_path(@conn, :edit, category)
-                i.fa.fa-edit
-                |  Edit
-              = link "Delete", to: category_path(@conn, :delete, category), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"
+    = render "categories_list.html", %{conn: @conn, categories: @categories}
