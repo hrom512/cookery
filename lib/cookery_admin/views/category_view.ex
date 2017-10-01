@@ -6,6 +6,7 @@ defmodule CookeryAdmin.CategoryView do
   def categories_for_select do
     Recipes.categories_tree()
     |> categories_list()
+    |> List.insert_at(0, {"-", nil})
   end
 
   defp categories_list(categories, level \\ 0) do
