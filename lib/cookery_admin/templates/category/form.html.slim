@@ -7,7 +7,7 @@
 
     .form-group class="#{if @changeset.action && @changeset.errors[:parent_id] do "has-error" end}"
       = label f, :parent_id
-      = textarea f, :parent_id, class: "form-control"
+      = select f, :parent_id, categories_for_select(), class: "form-control"
       = error_tag f, :parent_id
 
   .form-actions
