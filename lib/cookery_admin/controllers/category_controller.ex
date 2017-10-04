@@ -41,6 +41,10 @@ defmodule CookeryAdmin.CategoryController do
   def update(conn, %{"id" => id, "category" => category_params}) do
     category = Recipes.get_category!(id)
 
+    # сначала перемещаем в другого родителя
+    parent = Recipes.get_category!(category_params["parent_id"])
+    Recipes.update_category_parent(category, parent)
+
     case Recipes.update_category(category, category_params) do
       {:ok, category} ->
         conn

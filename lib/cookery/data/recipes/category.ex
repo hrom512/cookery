@@ -18,19 +18,8 @@ defmodule Cookery.Data.Recipes.Category do
 
   def changeset(%Category{} = category, attrs) do
     category
-    |> cast(attrs, [:parent_id, :name])
+    |> cast(attrs, [:name])
     |> validate_required([:name])
     |> unique_constraint(:name, name: :categories_parent_id_name_index)
-    |> set_materialized_path()
-  end
-
-  defp set_materialized_path(changeset) do
-    case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{parent_id: parent_id}} ->
-        parent = Recipes.get_category!(parent_id)
-        EctoMaterializedPath.make_child_of(changeset, parent, :materialized_path)
-      _ ->
-        changeset
-    end
   end
 end

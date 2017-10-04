@@ -120,6 +120,25 @@ defmodule Cookery.Data.Recipes do
       |> Repo.update!()
   end
 
+  def update_category_parent(category, parent) do
+    # TODO: пореписать в 1 SQL запрос
+    Category.subtree(category)
+    |> Repo.all()
+    |> Category.arrange()
+    |> assign_parent(parent)
+  end
+
+  defp assign_parent(categories, parent) do
+    Enum.each(categories,
+      fn({category, child_categories}) ->
+        Category.make_child_of(category, parent)
+        |> Repo.update!()
+        category = get_category!(category.id)
+        assign_parent(child_categories, category)
+      end
+    )
+  end
+
   @doc """
   Deletes a Recipe.
 
