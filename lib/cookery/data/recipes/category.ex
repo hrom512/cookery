@@ -4,6 +4,7 @@ defmodule Cookery.Data.Recipes.Category do
   alias Cookery.Data.Recipes
   alias Cookery.Data.Recipes.Category
   alias Cookery.Data.Recipes.Recipe
+  alias Cookery.MaterializedPath
 
   schema "categories" do
     field :name, :string
@@ -14,10 +15,14 @@ defmodule Cookery.Data.Recipes.Category do
     timestamps()
   end
 
+  def parent_id(category) do
+    MaterializedPath.parent_id(category)
+  end
+
   def changeset(%Category{} = category, attrs) do
     category
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> unique_constraint(:name, name: :categories_parent_id_name_index)
+    |> unique_constraint(:name, name: :categories_path_name_index)
   end
 end

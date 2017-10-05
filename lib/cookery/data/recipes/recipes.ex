@@ -8,6 +8,7 @@ defmodule Cookery.Data.Recipes do
 
   alias Cookery.Data.Recipes.Recipe
   alias Cookery.Data.Recipes.Category
+  alias Cookery.MaterializedPath
 
   @doc """
   Returns the list of recipes.
@@ -33,7 +34,7 @@ defmodule Cookery.Data.Recipes do
 
   def categories_tree do
     list_categories()
-    |> Category.arrange()
+    |> MaterializedPath.arrange()
   end
 
   @doc """
@@ -83,9 +84,14 @@ defmodule Cookery.Data.Recipes do
   end
 
   def create_category(attrs) do
+    if attrs["parent_id"] && attrs["parent_id"] != "" do
+      parent = get_category!(attrs["parent_id"])
+    else
+      parent = nil
+    end
     %Category{}
     |> Category.changeset(attrs)
-    |> Repo.insert()
+    |> MaterializedPath.create(parent)
   end
 
   @doc """
@@ -107,9 +113,26 @@ defmodule Cookery.Data.Recipes do
   end
 
   def update_category(%Category{} = category, attrs) do
+    if attrs["parent_id"] do
+      if attrs["parent_id"] == "" do
+        parent_id = nil
+        parent = nil
+      else
+        { parent_id, _ } = Integer.parse(attrs["parent_id"])
+        parent = get_category!(parent_id)
+      end
+      if parent_id != Category.parent_id(category) do
+        update_category_parent(category, parent)
+      end
+    end
+
     category
     |> Category.changeset(attrs)
     |> Repo.update()
+  end
+
+  def update_category_parent(category, parent) do
+    MaterializedPath.update_parent(category, parent)
   end
 
   def update_recipe_categories(recipe, categories) do
@@ -118,25 +141,6 @@ defmodule Cookery.Data.Recipes do
       |> Ecto.Changeset.change()
       |> Ecto.Changeset.put_assoc(:categories, categories)
       |> Repo.update!()
-  end
-
-  def update_category_parent(category, parent) do
-    # TODO: пореписать в 1 SQL запрос
-    Category.subtree(category)
-    |> Repo.all()
-    |> Category.arrange()
-    |> assign_parent(parent)
-  end
-
-  defp assign_parent(categories, parent) do
-    Enum.each(categories,
-      fn({category, child_categories}) ->
-        Category.make_child_of(category, parent)
-        |> Repo.update!()
-        category = get_category!(category.id)
-        assign_parent(child_categories, category)
-      end
-    )
   end
 
   @doc """
@@ -156,7 +160,7 @@ defmodule Cookery.Data.Recipes do
   end
 
   def delete_category(%Category{} = category) do
-    Repo.delete(category)
+    MaterializedPath.delete(category)
   end
 
   @doc """
