@@ -39,11 +39,10 @@ SET default_with_oids = false;
 
 CREATE TABLE categories (
     id bigint NOT NULL,
-    parent_id bigint,
+    path integer[] DEFAULT ARRAY[]::integer[] NOT NULL,
     name character varying(255) NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    materialized_path integer[] DEFAULT ARRAY[]::integer[] NOT NULL
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -244,10 +243,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: categories_parent_id_name_index; Type: INDEX; Schema: public; Owner: -
+-- Name: categories_path_name_index; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX categories_parent_id_name_index ON categories USING btree (parent_id, name);
+CREATE UNIQUE INDEX categories_path_name_index ON categories USING btree (path, name);
 
 
 --
@@ -262,14 +261,6 @@ CREATE UNIQUE INDEX recipes_categories_recipe_id_category_id_index ON recipes_ca
 --
 
 CREATE INDEX recipes_user_id_index ON recipes USING btree (user_id);
-
-
---
--- Name: categories_parent_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY categories
-    ADD CONSTRAINT categories_parent_id_fkey FOREIGN KEY (parent_id) REFERENCES categories(id);
 
 
 --
@@ -300,5 +291,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558), (20170930194510);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558);
 

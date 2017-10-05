@@ -7,7 +7,7 @@ defmodule Cookery.Data.Recipes.Category do
 
   schema "categories" do
     field :name, :string
-    field :path, :array, default: []
+    field :path, {:array, :integer}, default: []
     field :parent_id, :integer, virtual: true
     many_to_many :recipes, Recipe, join_through: "recipes_categories"
 

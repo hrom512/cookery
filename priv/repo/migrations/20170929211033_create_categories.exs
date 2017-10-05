@@ -3,12 +3,12 @@ defmodule Cookery.Repo.Migrations.CreateCategories do
 
   def change do
     create table(:categories) do
-      add :parent_id, references(:categories)
+      add :path, {:array, :integer}, null: false, default: []
       add :name, :string, null: false
 
       timestamps()
     end
 
-    create unique_index(:categories, [:parent_id, :name])
+    create unique_index(:categories, [:path, :name])
   end
 end
