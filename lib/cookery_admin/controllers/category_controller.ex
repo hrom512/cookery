@@ -29,7 +29,8 @@ defmodule CookeryAdmin.CategoryController do
 
   def show(conn, %{"id" => id}) do
     category = Recipes.get_category!(id)
-    render(conn, "show.html", category: category)
+    parent_category = Category.parent(category)
+    render(conn, "show.html", category: category, parent_category: parent_category)
   end
 
   def edit(conn, %{"id" => id}) do

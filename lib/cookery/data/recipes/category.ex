@@ -19,6 +19,10 @@ defmodule Cookery.Data.Recipes.Category do
     MaterializedPath.parent_id(category)
   end
 
+  def parent(category) do
+    MaterializedPath.parent(category)
+  end
+
   def changeset(%Category{} = category, attrs) do
     category
     |> cast(attrs, [:name])

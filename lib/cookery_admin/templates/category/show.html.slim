@@ -23,7 +23,7 @@
           td = @category.name
         tr
           td Parent
-          td = @category.parent_id
+          td = @parent_category.name
         tr
           td Created
           td = @category.inserted_at |> format_datetime(@current_timezone)

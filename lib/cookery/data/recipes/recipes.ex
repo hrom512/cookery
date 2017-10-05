@@ -177,6 +177,8 @@ defmodule Cookery.Data.Recipes do
   end
 
   def change_category(%Category{} = category) do
-    Category.changeset(category, %{})
+    category
+    |> Map.put(:parent_id, Category.parent_id(category))
+    |> Category.changeset(%{})
   end
 end
