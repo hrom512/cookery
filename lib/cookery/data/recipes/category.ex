@@ -1,7 +1,6 @@
 defmodule Cookery.Data.Recipes.Category do
   use Cookery, :schema
 
-  alias Cookery.Data.Recipes
   alias Cookery.Data.Recipes.Category
   alias Cookery.Data.Recipes.Recipe
   alias Cookery.MaterializedPath

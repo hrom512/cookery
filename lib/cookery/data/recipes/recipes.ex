@@ -64,6 +64,11 @@ defmodule Cookery.Data.Recipes do
     Repo.get!(Category, id)
   end
 
+  def get_category(nil), do: nil
+  def get_category(id) do
+    Repo.get(Category, id)
+  end
+
   @doc """
   Creates a recipe.
 
@@ -83,12 +88,7 @@ defmodule Cookery.Data.Recipes do
     |> Repo.insert()
   end
 
-  def create_category(attrs) do
-    if attrs["parent_id"] && attrs["parent_id"] != "" do
-      parent = get_category!(attrs["parent_id"])
-    else
-      parent = nil
-    end
+  def create_category(attrs, parent \\ nil) do
     %Category{}
     |> Category.changeset(attrs)
     |> MaterializedPath.create(parent)
@@ -113,19 +113,6 @@ defmodule Cookery.Data.Recipes do
   end
 
   def update_category(%Category{} = category, attrs) do
-    if attrs["parent_id"] do
-      if attrs["parent_id"] == "" do
-        parent_id = nil
-        parent = nil
-      else
-        { parent_id, _ } = Integer.parse(attrs["parent_id"])
-        parent = get_category!(parent_id)
-      end
-      if parent_id != Category.parent_id(category) do
-        update_category_parent(category, parent)
-      end
-    end
-
     category
     |> Category.changeset(attrs)
     |> Repo.update()

@@ -10,9 +10,9 @@ defmodule Cookery.MaterializedPath do
     List.last(item.path)
   end
 
+  def parent(%{ path: [] }), do: nil
   def parent(item = %{ __struct__: struct }) do
-    from(q in struct, where: q.id == ^parent_id(item), limit: 1)
-    |> Repo.one()
+    Repo.get(struct, parent_id(item))
   end
 
   def ancestor_ids(item) do
@@ -30,25 +30,23 @@ defmodule Cookery.MaterializedPath do
   end
 
   def create(changeset, parent) do
-    if parent do
-      new_path = parent.path ++ [parent.id]
-      changeset = Ecto.Changeset.change(changeset, %{ path: new_path })
-    end
-    Repo.insert(changeset)
+    changeset
+    |> Ecto.Changeset.change(%{ path: children_path(parent) })
+    |> Repo.insert()
   end
 
-  def delete(item = %{ __struct__: struct, id: id }) do
+  def delete(%{ __struct__: struct, id: id }) do
     from(q in struct, where: q.id == ^id or fragment("? = ANY(path)", ^id))
     |> Repo.delete_all()
   end
 
-  def update_parent(item = %{ __struct__: struct}, parent) do
-    if parent do
-      new_path = parent.path ++ [parent.id]
-    else
-      new_path = []
-    end
-    move_to_path(item, new_path)
+  def update_parent(item, parent) do
+    move_to_path(item, children_path(parent))
+  end
+
+  defp children_path(nil), do: []
+  defp children_path(parent) do
+    parent.path ++ [parent.id]
   end
 
   defp move_to_path(item = %{ __struct__: struct}, new_path) do

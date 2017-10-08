@@ -5,6 +5,7 @@ defmodule CookeryAdmin.CategoryController do
   alias Cookery.Data.Recipes.Category
 
   plug :load_and_authorize_resource, model: Category
+  plug :scrub_params, "category" when action in [:create, :update]
 
   def index(conn, _params) do
     categories = Recipes.categories_tree()
@@ -17,7 +18,9 @@ defmodule CookeryAdmin.CategoryController do
   end
 
   def create(conn, %{"category" => category_params}) do
-    case Recipes.create_category(category_params) do
+    parent = Recipes.get_category(category_params["parent_id"])
+
+    case Recipes.create_category(category_params, parent) do
       {:ok, category} ->
         conn
         |> put_flash(:info, "Category created successfully.")
@@ -29,8 +32,8 @@ defmodule CookeryAdmin.CategoryController do
 
   def show(conn, %{"id" => id}) do
     category = Recipes.get_category!(id)
-    parent_category = Category.parent(category)
-    render(conn, "show.html", category: category, parent_category: parent_category)
+    parent = Category.parent(category)
+    render(conn, "show.html", category: category, parent: parent)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -41,6 +44,10 @@ defmodule CookeryAdmin.CategoryController do
 
   def update(conn, %{"id" => id, "category" => category_params}) do
     category = Recipes.get_category!(id)
+    parent = Recipes.get_category(category_params["parent_id"])
+
+    Recipes.update_category_parent(category, parent)
+
     case Recipes.update_category(category, category_params) do
       {:ok, category} ->
         conn
