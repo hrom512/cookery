@@ -2,10 +2,6 @@ ul style="display: block; padding: 0 0 0 20px;"
   = for {category, child_categories} <- @categories do
     li style="display: block; clear: both; padding: 10px 0; border-bottom: 1px solid #eee;"
       div.text-right style="float: right;"
-        a.btn.btn-xs.btn-outline.btn-circle.green href=category_path(@conn, :show, category)
-          i.fa.fa-eye
-          |  Show
-        | &nbsp;
         a.btn.btn-xs.btn-outline.btn-circle.blue href=category_path(@conn, :edit, category)
           i.fa.fa-edit
           |  Edit

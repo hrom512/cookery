@@ -21,19 +21,13 @@ defmodule CookeryAdmin.CategoryController do
     parent = Recipes.get_category(category_params["parent_id"])
 
     case Recipes.create_category(category_params, parent) do
-      {:ok, category} ->
+      {:ok, _category} ->
         conn
         |> put_flash(:info, "Category created successfully.")
-        |> redirect(to: category_path(conn, :show, category))
+        |> redirect(to: category_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
-  end
-
-  def show(conn, %{"id" => id}) do
-    category = Recipes.get_category!(id)
-    parent = Category.parent(category)
-    render(conn, "show.html", category: category, parent: parent)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -49,10 +43,10 @@ defmodule CookeryAdmin.CategoryController do
     Recipes.update_category_parent(category, parent)
 
     case Recipes.update_category(category, category_params) do
-      {:ok, category} ->
+      {:ok, _category} ->
         conn
         |> put_flash(:info, "Category updated successfully.")
-        |> redirect(to: category_path(conn, :show, category))
+        |> redirect(to: category_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", category: category, changeset: changeset)
     end

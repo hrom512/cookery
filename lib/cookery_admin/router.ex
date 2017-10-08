@@ -29,6 +29,6 @@ defmodule CookeryAdmin.Router do
 
     resources "/recipes", RecipeController
 
-    resources "/categories", CategoryController
+    resources "/categories", CategoryController, except: [:show]
   end
 end
