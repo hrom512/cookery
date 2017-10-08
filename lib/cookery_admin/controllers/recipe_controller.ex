@@ -28,18 +28,21 @@ defmodule CookeryAdmin.RecipeController do
   end
 
   def show(conn, %{"id" => id}) do
-    recipe = Recipes.get_recipe_with_user!(id)
+    recipe = Recipes.get_recipe_with_user_and_categories!(id)
     render(conn, "show.html", recipe: recipe)
   end
 
   def edit(conn, %{"id" => id}) do
-    recipe = Recipes.get_recipe!(id)
+    recipe = Recipes.get_recipe_with_user_and_categories!(id)
     changeset = Recipes.change_recipe(recipe)
     render(conn, "edit.html", recipe: recipe, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "recipe" => recipe_params}) do
     recipe = Recipes.get_recipe!(id)
+    categories = Recipes.get_categiries(recipe_params["categories_ids"])
+
+    Recipes.update_recipe_categories(recipe, categories)
 
     case Recipes.update_recipe(recipe, recipe_params) do
       {:ok, recipe} ->
