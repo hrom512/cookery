@@ -6,13 +6,13 @@ defimpl Canada.Can, for: User do
   def can?(_, _, nil), do: true
 
   # Admin can all
-  def can?(%User{ is_admin: true }, _, _), do: true
+  def can?(%User{is_admin: true}, _, _), do: true
 
   # User can manage its recipes
-  def can?(%User{ id: user_id }, _, %Recipe{ user_id: user_id }), do: true
+  def can?(%User{id: user_id}, _, %Recipe{user_id: user_id}), do: true
 
   # User can manage his profile
-  def can?(%User{ id: user_id }, _, %User{ id: user_id }), do: true
+  def can?(%User{id: user_id}, _, %User{id: user_id}), do: true
 
   # User can show any recipes
   def can?(%User{}, :index, Recipe), do: true

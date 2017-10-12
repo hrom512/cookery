@@ -22,7 +22,7 @@ defmodule Cookery.Data.Recipes do
   end
 
   def list_recipes_with_users do
-    list_recipes
+    list_recipes()
     |> Repo.preload(:user)
   end
 
@@ -45,7 +45,8 @@ defmodule Cookery.Data.Recipes do
   end
 
   def get_recipe_with_user!(id) do
-    get_recipe!(id)
+    id
+    |> get_recipe!()
     |> Repo.preload(:user)
   end
 
@@ -62,7 +63,7 @@ defmodule Cookery.Data.Recipes do
 
   """
   def create_recipe(attrs, user) do
-    attrs = Dict.put(attrs, "user_id", user.id)
+    attrs = Map.put(attrs, "user_id", user.id)
     %Recipe{}
     |> Recipe.changeset(attrs)
     |> Repo.insert()
