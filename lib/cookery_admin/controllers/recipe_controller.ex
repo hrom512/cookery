@@ -40,8 +40,9 @@ defmodule CookeryAdmin.RecipeController do
 
   def update(conn, %{"id" => id, "recipe" => recipe_params}) do
     recipe = Recipes.get_recipe!(id)
-    categories = Recipes.get_categiries(recipe_params["categories_ids"])
 
+    categories_ids = recipe_params["categories_ids"] || []
+    categories = Recipes.get_categiries(categories_ids)
     Recipes.update_recipe_categories(recipe, categories)
 
     case Recipes.update_recipe(recipe, recipe_params) do

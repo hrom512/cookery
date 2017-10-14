@@ -86,6 +86,7 @@ defmodule Cookery.Data.Recipes do
     Repo.get(Category, id)
   end
 
+  def get_categiries([]), do: []
   def get_categiries(ids) do
     from(c in Category, where: c.id in ^ids)
     |> Repo.all()
