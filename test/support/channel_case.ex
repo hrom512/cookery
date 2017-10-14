@@ -15,6 +15,9 @@ defmodule CookeryWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Cookery.Repo
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -25,13 +28,11 @@ defmodule CookeryWeb.ChannelCase do
     end
   end
 
-
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Cookery.Repo)
+    :ok = Sandbox.checkout(Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Cookery.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
     :ok
   end
-
 end

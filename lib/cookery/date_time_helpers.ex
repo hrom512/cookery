@@ -1,4 +1,6 @@
 defmodule Cookery.DateTimeHelpers do
+  @moduledoc false
+
   use Timex
 
   def format_datetime(datetime, timezone, strftime_format \\ "%F %T") do

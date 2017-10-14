@@ -1,6 +1,10 @@
 defmodule Cookery.Avatar do
+  @moduledoc false
+
   use Arc.Definition
   use Arc.Ecto.Definition
+
+  alias Plug.MIME
 
   @versions [:original, :thumb]
 
@@ -30,6 +34,6 @@ defmodule Cookery.Avatar do
   end
 
   def s3_object_headers(_version, {file, _scope}) do
-    [content_type: Plug.MIME.path(file.file_name)]
+    [content_type: MIME.path(file.file_name)]
   end
 end

@@ -1,7 +1,10 @@
 defmodule Cookery.Data.Accounts.User do
+  @moduledoc false
+
   use Cookery, :schema
   use Arc.Ecto.Schema
 
+  alias Comeonin.Bcrypt
   alias Cookery.Data.Accounts.User
   alias Cookery.Data.Recipes.Recipe
 
@@ -45,9 +48,8 @@ defmodule Cookery.Data.Accounts.User do
   end
 
   def check_password(%User{} = user, password) do
-    Comeonin.Bcrypt.checkpw(password, user.password)
+    Bcrypt.checkpw(password, user.password)
   end
-
 
   defp with_name_and_timezone(changeset, attrs) do
     changeset
@@ -74,7 +76,7 @@ defmodule Cookery.Data.Accounts.User do
   defp generate_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
-        put_change(changeset, :password, Comeonin.Bcrypt.hashpwsalt(password))
+        put_change(changeset, :password, Bcrypt.hashpwsalt(password))
       _ ->
         changeset
     end

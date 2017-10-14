@@ -1,10 +1,14 @@
 defmodule CookeryWeb.Loaders do
+  @moduledoc false
+
   import Plug.Conn
   use Timex
 
+  alias Guardian.Plug, as: GuardianPlug
+
   def load_current_user(conn, _opts) do
     conn
-    |> assign(:current_user, Guardian.Plug.current_resource(conn))
+    |> assign(:current_user, GuardianPlug.current_resource(conn))
   end
 
   def load_current_timezone(conn, _opts) do
@@ -14,7 +18,7 @@ defmodule CookeryWeb.Loaders do
 
   defp user_timezone(user) do
     case Timezone.get(user.timezone) do
-      {:error, _} -> default_timezone
+      {:error, _} -> default_timezone()
       timezone -> timezone
     end
   end

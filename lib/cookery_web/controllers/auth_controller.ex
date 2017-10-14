@@ -1,6 +1,7 @@
 defmodule CookeryWeb.AuthController do
   use CookeryWeb, :controller
 
+  alias Guardian.Plug, as: GuardianPlug
   alias Cookery.Data.Accounts
 
   def login_form(conn, params) do
@@ -11,7 +12,7 @@ defmodule CookeryWeb.AuthController do
     case Accounts.find_and_confirm_password(params["login"], params["password"]) do
       {:ok, user} ->
          conn
-         |> Guardian.Plug.sign_in(user)
+         |> GuardianPlug.sign_in(user)
          |> redirect(to: redirect_to(params))
       {:error, _} ->
         conn
@@ -22,7 +23,7 @@ defmodule CookeryWeb.AuthController do
 
   def logout(conn, _params) do
     conn
-    |> Guardian.Plug.sign_out
+    |> GuardianPlug.sign_out
     |> redirect(to: "/")
   end
 

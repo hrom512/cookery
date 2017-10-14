@@ -10,7 +10,10 @@ defmodule Seeds do
       avatar: %Plug.Upload{
         content_type: "image/jpeg",
         filename: filename,
-        path: Path.join([Application.app_dir(:cookery, "priv"), "repo", "seeds", "avatars", filename])
+        path: Path.join([
+          Application.app_dir(:cookery, "priv"),
+          "repo", "seeds", "avatars", filename
+        ])
       }
     })
   end

@@ -31,7 +31,7 @@ config :guardian, Guardian,
   allowed_algos: ["HS512"],
   verify_issuer: true,
   issuer: "Cookery",
-  ttl: { 30, :days },
+  ttl: {30, :days},
   allowed_drift: 2000,
   serializer: Cookery.GuardianSerializer,
   secret_key: %{

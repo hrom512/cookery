@@ -1,4 +1,6 @@
 defmodule Cookery.GuardianSerializer do
+  @moduledoc false
+
   @behaviour Guardian.Serializer
 
   alias Cookery.Data.Accounts
