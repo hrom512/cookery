@@ -49,7 +49,8 @@ defmodule Cookery.Data.AccountsTest do
 
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
-      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
+      result = Accounts.update_user(user, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = result
       assert user == Accounts.get_user!(user.id)
     end
 

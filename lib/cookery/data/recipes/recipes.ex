@@ -26,7 +26,8 @@ defmodule Cookery.Data.Recipes do
   end
 
   def get_recipe_with_user_and_categories!(id) do
-    get_recipe!(id)
+    id
+    |> get_recipe!()
     |> Repo.preload(:user)
     |> Repo.preload(:categories)
   end

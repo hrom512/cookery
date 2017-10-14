@@ -1,4 +1,6 @@
 defmodule Cookery.Data.Recipes.Recipe do
+  @moduledoc false
+
   use Cookery, :schema
 
   alias Cookery.Data.Recipes.Recipe
