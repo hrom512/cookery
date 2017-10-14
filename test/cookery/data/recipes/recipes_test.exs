@@ -76,9 +76,9 @@ defmodule Cookery.Data.RecipesTest do
       assert_raise Ecto.NoResultsError, fn -> Recipes.get_recipe!(recipe.id) end
     end
 
-    test "change_recipe/1 returns a recipe changeset" do
-      recipe = recipe_fixture()
-      assert %Ecto.Changeset{} = Recipes.change_recipe(recipe)
-    end
+    # test "change_recipe/1 returns a recipe changeset" do
+    #   recipe = recipe_fixture()
+    #   assert %Ecto.Changeset{} = Recipes.change_recipe(recipe)
+    # end
   end
 end
