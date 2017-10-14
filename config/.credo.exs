@@ -91,7 +91,7 @@
         {Credo.Check.Refactor.NegatedConditionsInUnless},
         {Credo.Check.Refactor.NegatedConditionsWithElse},
         {Credo.Check.Refactor.Nesting},
-        {Credo.Check.Refactor.PipeChainStart, excluded_functions: ["from"]},
+        {Credo.Check.Refactor.PipeChainStart, excluded_functions: ["from", "get_recipe!"]},
         {Credo.Check.Refactor.UnlessWithElse},
 
         {Credo.Check.Warning.BoolOperationOnSameValues},

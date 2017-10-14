@@ -27,10 +27,9 @@ defmodule Cookery.Data.Recipes do
   end
 
   def get_recipe_with_user_and_categories!(id) do
-    id
-    |> get_recipe!()
-    |> Repo.preload(:user)
-    |> Repo.preload(:categories)
+    recipe = get_recipe!(id) |> Repo.preload([:user, :categories])
+    categories_ids = recipe.categories |> Enum.map(&(&1.id))
+    recipe |> Map.put(:categories_ids, categories_ids)
   end
 
   def create_recipe(attrs, user) do
@@ -59,11 +58,7 @@ defmodule Cookery.Data.Recipes do
   end
 
   def change_recipe(%Recipe{} = recipe) do
-    categories_ids = recipe.categories |> Enum.map(&(&1.id))
-
-    recipe
-    |> Map.put(:categories_ids, categories_ids)
-    |> Recipe.changeset(%{})
+    Recipe.changeset(recipe, %{})
   end
 
   # Categories

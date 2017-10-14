@@ -19,6 +19,7 @@ defmodule CookeryAdmin.RecipeController do
   def create(conn, %{"recipe" => recipe_params}) do
     case Recipes.create_recipe(recipe_params, conn.assigns.current_user) do
       {:ok, recipe} ->
+        update_recipe_categories(recipe, recipe_params)
         conn
         |> put_flash(:info, "Recipe created successfully.")
         |> redirect(to: recipe_path(conn, :show, recipe))
@@ -40,13 +41,9 @@ defmodule CookeryAdmin.RecipeController do
 
   def update(conn, %{"id" => id, "recipe" => recipe_params}) do
     recipe = Recipes.get_recipe!(id)
-
-    categories_ids = recipe_params["categories_ids"] || []
-    categories = Recipes.get_categiries(categories_ids)
-    Recipes.update_recipe_categories(recipe, categories)
-
     case Recipes.update_recipe(recipe, recipe_params) do
       {:ok, recipe} ->
+        update_recipe_categories(recipe, recipe_params)
         conn
         |> put_flash(:info, "Recipe updated successfully.")
         |> redirect(to: recipe_path(conn, :show, recipe))
@@ -62,5 +59,11 @@ defmodule CookeryAdmin.RecipeController do
     conn
     |> put_flash(:info, "Recipe deleted successfully.")
     |> redirect(to: recipe_path(conn, :index))
+  end
+
+  defp update_recipe_categories(recipe, recipe_params) do
+    categories_ids = recipe_params["categories_ids"] || []
+    categories = Recipes.get_categiries(categories_ids)
+    Recipes.update_recipe_categories(recipe, categories)
   end
 end
