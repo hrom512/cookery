@@ -1,0 +1,14 @@
+= form_for @changeset, @action, fn f ->
+  .form-body
+    .form-group class="#{if @changeset.action && @changeset.errors[:name] do "has-error" end}"
+      = label f, :name
+      = text_input f, :name, class: "form-control"
+      = error_tag f, :name
+
+    .form-group class="#{if @changeset.action && @changeset.errors[:parent_id] do "has-error" end}"
+      = label f, :parent_id
+      = select f, :parent_id, categories_for_select(), class: "form-control"
+      = error_tag f, :parent_id
+
+  .form-actions
+    = submit "Submit", class: "btn blue"

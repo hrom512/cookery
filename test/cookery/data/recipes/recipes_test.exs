@@ -29,7 +29,7 @@ defmodule Cookery.Data.RecipesTest do
       {:ok, recipe} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Recipes.create_recipe(user_fixture)
+        |> Recipes.create_recipe(user_fixture())
 
       recipe
     end
@@ -45,13 +45,13 @@ defmodule Cookery.Data.RecipesTest do
     end
 
     test "create_recipe/2 with valid data creates a recipe" do
-      assert {:ok, recipe} = Recipes.create_recipe(@valid_attrs, user_fixture)
+      assert {:ok, recipe} = Recipes.create_recipe(@valid_attrs, user_fixture())
       assert recipe.description == "some description"
       assert recipe.title == "some title"
     end
 
     test "create_recipe/2 with invalid data returns error changeset" do
-      result = Recipes.create_recipe(@invalid_attrs, user_fixture)
+      result = Recipes.create_recipe(@invalid_attrs, user_fixture())
       assert {:error, %Ecto.Changeset{}} = result
     end
 

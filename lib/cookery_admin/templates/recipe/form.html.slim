@@ -10,5 +10,10 @@
       = textarea f, :description, class: "form-control"
       = error_tag f, :description
 
+    .form-group class="#{if @changeset.action && @changeset.errors[:categories_ids] do "has-error" end}"
+      = label f, :categories_ids
+      = multiple_select f, :categories_ids, categories_for_select(), class: "form-control", style: "height: 300px;"
+      = error_tag f, :categories_ids
+
   .form-actions
     = submit "Submit", class: "btn blue"

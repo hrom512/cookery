@@ -28,5 +28,7 @@ defmodule CookeryAdmin.Router do
     put "/users/:id/update_password", UserController, :update_password
 
     resources "/recipes", RecipeController
+
+    resources "/categories", CategoryController, except: [:show]
   end
 end

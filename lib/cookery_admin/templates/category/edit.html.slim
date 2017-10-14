@@ -1,0 +1,11 @@
+.portlet
+  .portlet-title
+    .caption
+      .page-title Edit Category #{@category.id}
+    .actions
+      a.btn.btn-sm.btn-circle.btn-default href=category_path(@conn, :index)
+        i.fa.fa-arrow-left
+        |  Back to list
+
+  .portlet-body.form
+    = render "form.html", Map.put(assigns, :action, category_path(@conn, :update, @category))

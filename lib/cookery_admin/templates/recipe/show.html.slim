@@ -25,6 +25,9 @@
           td Description
           td = @recipe.description
         tr
+          td Categories
+          td = recipe_categories(@recipe)
+        tr
           td User
           td = @recipe.user.login
         tr
