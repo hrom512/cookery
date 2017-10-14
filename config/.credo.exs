@@ -1,18 +1,6 @@
-# This file contains the configuration for Credo and you are probably reading
-# this after creating it with `mix credo.gen.config`.
-#
-# If you find anything wrong or unclear in this file, please report an
-# issue on GitHub: https://github.com/rrrene/credo/issues
-#
 %{
-  #
-  # You can have as many configs as you like in the `configs:` field.
   configs: [
     %{
-      #
-      # Run any exec using `mix credo -C <name>`. If no exec name is given
-      # "default" is used.
-      #
       name: "default",
       #
       # These are the files included in the analysis:
@@ -20,8 +8,7 @@
         #
         # You can give explicit globs or simply directories.
         # In the latter case `**/*.{ex,exs}` will be used.
-      #
-        included: ["lib/", "test/"],
+        included: ["config/", "lib/", "priv/", "test/"],
         excluded: [~r"/_build/", ~r"/deps/"]
       },
       #
@@ -33,7 +20,7 @@
       # If you want to enforce a style guide and need a more traditional linting
       # experience, you can change `strict` to `true` below:
       #
-      strict: false,
+      strict: true,
       #
       # If you want to use uncolored output by default, you can change `color`
       # to `false` below:
@@ -58,7 +45,9 @@
         # For some checks, like AliasUsage, you can only customize the priority
         # Priority values are: `low, normal, high, higher`
         #
-        {Credo.Check.Design.AliasUsage, priority: :low},
+        # {Credo.Check.Design.AliasUsage, priority: :low}
+        #
+        {Credo.Check.Design.AliasUsage},
 
         # For others you can set parameters
 
@@ -79,7 +68,7 @@
         {Credo.Check.Readability.LargeNumbers},
         {Credo.Check.Readability.MaxLineLength, priority: :low, max_length: 80},
         {Credo.Check.Readability.ModuleAttributeNames},
-        {Credo.Check.Readability.ModuleDoc, priority: :low},
+        {Credo.Check.Readability.ModuleDoc},
         {Credo.Check.Readability.ModuleNames},
         {Credo.Check.Readability.ParenthesesOnZeroArityDefs},
         {Credo.Check.Readability.ParenthesesInCondition},
