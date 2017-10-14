@@ -4,8 +4,9 @@ defmodule Cookery.Data.Recipes do
   """
 
   import Ecto.Query, warn: false
-  alias Cookery.Repo
 
+  alias Ecto.Changeset
+  alias Cookery.Repo
   alias Cookery.Data.Recipes.Recipe
   alias Cookery.Data.Recipes.Category
   alias Cookery.MaterializedPath
@@ -48,8 +49,8 @@ defmodule Cookery.Data.Recipes do
   def update_recipe_categories(recipe, categories) do
     recipe
       |> Repo.preload(:categories)
-      |> Ecto.Changeset.change()
-      |> Ecto.Changeset.put_assoc(:categories, categories)
+      |> Changeset.change()
+      |> Changeset.put_assoc(:categories, categories)
       |> Repo.update!()
   end
 

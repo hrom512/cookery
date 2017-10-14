@@ -1,5 +1,9 @@
 defmodule Cookery.MaterializedPath do
+  @moduledoc false
+
   import Ecto.Query, warn: false
+
+  alias Ecto.Changeset
   alias Cookery.Repo
 
   def depth(item) do
@@ -10,8 +14,8 @@ defmodule Cookery.MaterializedPath do
     List.last(item.path)
   end
 
-  def parent(%{ path: [] }), do: nil
-  def parent(item = %{ __struct__: struct }) do
+  def parent(%{path: []}), do: nil
+  def parent(%{__struct__: struct} = item) do
     Repo.get(struct, parent_id(item))
   end
 
@@ -19,23 +23,23 @@ defmodule Cookery.MaterializedPath do
     item.path
   end
 
-  def ancestors(item = %{ __struct__: struct }) do
+  def ancestors(%{__struct__: struct} = item) do
     from(q in struct, where: q.id in ^ancestor_ids(item))
     |> Repo.all()
   end
 
-  def descendants(item = %{ __struct__: struct }) do
+  def descendants(%{__struct__: struct} = item) do
     from(q in struct, where: fragment("? = ANY(path)", ^item.id))
     |> Repo.all()
   end
 
   def create(changeset, parent) do
     changeset
-    |> Ecto.Changeset.change(%{ path: children_path(parent) })
+    |> Changeset.change(%{path: children_path(parent)})
     |> Repo.insert()
   end
 
-  def delete(%{ __struct__: struct, id: id }) do
+  def delete(%{__struct__: struct, id: id}) do
     from(q in struct, where: q.id == ^id or fragment("? = ANY(path)", ^id))
     |> Repo.delete_all()
   end
@@ -49,7 +53,7 @@ defmodule Cookery.MaterializedPath do
     parent.path ++ [parent.id]
   end
 
-  defp move_to_path(item = %{ __struct__: struct}, new_path) do
+  defp move_to_path(%{__struct__: struct} = item, new_path) do
     new_depth = depth(item) + 1
     from(q in struct,
       where: q.id == ^item.id or fragment("? = ANY(path)", ^item.id),
@@ -64,14 +68,18 @@ defmodule Cookery.MaterializedPath do
 
   def arrange([]), do: []
   def arrange(items) do
-    root_depth = Enum.map(items, fn(item) -> depth(item) end) |> Enum.min
-    root_items = Enum.filter(items, fn(item) -> depth(item) == root_depth end)
+    root_depth = items |> Enum.map(fn(item) -> depth(item) end) |> Enum.min
+    root_items = items |> Enum.filter(fn(item) -> depth(item) == root_depth end)
 
-    Enum.map(root_items, fn(item) -> item_with_ancestors(item, items) end)
+    root_items |> Enum.map(fn(item) -> item_with_ancestors(item, items) end)
   end
 
   defp item_with_ancestors(parent, items) do
-    children = Enum.filter(items, fn(item) -> parent_id(item) == parent.id end)
-    { parent, Enum.map(children, fn(item) -> item_with_ancestors(item, items) end) }
+    {
+      parent,
+      items
+      |> Enum.filter(fn(item) -> parent_id(item) == parent.id end)
+      |> Enum.map(fn(item) -> item_with_ancestors(item, items) end)
+    }
   end
 end

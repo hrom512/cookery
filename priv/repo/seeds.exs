@@ -20,7 +20,7 @@ defmodule Seeds do
 
   def create_subcategories(parent, names) do
     Enum.map names, fn name ->
-      Recipes.create_category(%{ "name" => name }, parent)
+      Recipes.create_category(%{"name" => name}, parent)
     end
   end
 end

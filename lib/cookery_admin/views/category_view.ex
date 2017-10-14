@@ -10,13 +10,14 @@ defmodule CookeryAdmin.CategoryView do
   end
 
   defp categories_list(categories, level \\ 0) do
-    Enum.map(categories,
-      fn({category, child_categories}) ->
-        title = String.duplicate("- ", level) <> category.name
-        child_items = categories_list(child_categories, level + 1)
-        [{title, category.id} | child_items]
-      end
-    )
+    categories
+    |> Enum.map(
+         fn({category, child_categories}) ->
+           title = String.duplicate("- ", level) <> category.name
+           child_items = categories_list(child_categories, level + 1)
+           [{title, category.id} | child_items]
+         end
+       )
     |> Enum.concat()
   end
 end
