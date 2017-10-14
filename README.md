@@ -1,5 +1,7 @@
 # Cookery
 
+[![Build Status](https://travis-ci.org/hrom512/cookery.svg?branch=master)](https://travis-ci.org/hrom512/cookery)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
