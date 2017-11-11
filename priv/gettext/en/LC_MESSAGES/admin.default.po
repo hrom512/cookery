@@ -1,0 +1,39 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:2
+msgid "Are you sure?"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/edit.html.slim:1
+#: lib/cookery_admin/templates/recipe/new.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Back to list"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+msgid "Delete"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Edit"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/edit.html.slim:1
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+msgid "Show"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/form.html.slim:1
+msgid "Submit"
+msgstr ""

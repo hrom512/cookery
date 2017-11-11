@@ -21,7 +21,7 @@ defmodule CookeryAdmin.RecipeController do
       {:ok, recipe} ->
         update_recipe_categories(recipe, recipe_params)
         conn
-        |> put_flash(:info, "Recipe created successfully.")
+        |> put_flash(:info, dgettext("recipes", "Recipe created successfully."))
         |> redirect(to: recipe_path(conn, :show, recipe))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -45,7 +45,7 @@ defmodule CookeryAdmin.RecipeController do
       {:ok, recipe} ->
         update_recipe_categories(recipe, recipe_params)
         conn
-        |> put_flash(:info, "Recipe updated successfully.")
+        |> put_flash(:info, dgettext("recipes", "Recipe updated successfully."))
         |> redirect(to: recipe_path(conn, :show, recipe))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", recipe: recipe, changeset: changeset)
@@ -57,7 +57,7 @@ defmodule CookeryAdmin.RecipeController do
     {:ok, _recipe} = Recipes.delete_recipe(recipe)
 
     conn
-    |> put_flash(:info, "Recipe deleted successfully.")
+    |> put_flash(:info, dgettext("recipes", "Recipe deleted successfully."))
     |> redirect(to: recipe_path(conn, :index))
   end
 

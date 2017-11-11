@@ -1,0 +1,56 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Categories"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Created"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Description"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+msgid "Listing Recipes"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/new.html.slim:1
+msgid "New Recipe"
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:24
+msgid "Recipe created successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:60
+msgid "Recipe deleted successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:48
+msgid "Recipe updated successfully."
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Title"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "User"
+msgstr ""

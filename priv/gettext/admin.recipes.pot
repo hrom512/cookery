@@ -1,0 +1,56 @@
+## This file is a PO Template file.
+##
+## `msgid`s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run `mix gettext.extract` to bring this file up to
+## date. Leave `msgstr`s empty as changing them here as no
+## effect: edit them in PO (`.po`) files instead.
+msgid ""
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Categories"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Created"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Description"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+msgid "Listing Recipes"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/new.html.slim:1
+msgid "New Recipe"
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:24
+msgid "Recipe created successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:60
+msgid "Recipe deleted successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/recipe_controller.ex:48
+msgid "Recipe updated successfully."
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "Title"
+msgstr ""
+
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+msgid "User"
+msgstr ""
