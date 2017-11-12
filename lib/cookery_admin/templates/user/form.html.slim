@@ -13,7 +13,7 @@
 
     .form-group class="#{if @changeset.action && @changeset.errors[:timezone] do "has-error" end}"
       = label f, :timezone
-      = text_input f, :timezone, class: "form-control"
+      = select f, :timezone, timezones_list, class: "form-control"
       = error_tag f, :timezone
 
     .form-group class="#{if @changeset.action && @changeset.errors[:login] do "has-error" end}"
