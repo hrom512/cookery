@@ -7,10 +7,10 @@
           span
 
       li.heading
-        h3.uppercase Resorces
-      = render "_menu_item.html", title: "Recipes", path: recipe_path(@conn, :index), conn: @conn
-      = render "_menu_item.html", title: "Categories", path: category_path(@conn, :index), conn: @conn
+        h3.uppercase = gettext "Resorces"
+      = render "_menu_item.html", title: gettext("Recipes"), path: recipe_path(@conn, :index), conn: @conn
+      = render "_menu_item.html", title: gettext("Categories"), path: category_path(@conn, :index), conn: @conn
 
       li.heading
-        h3.uppercase System
-      = render "_menu_item.html", title: "Users", path: user_path(@conn, :index), conn: @conn
+        h3.uppercase = gettext "System"
+      = render "_menu_item.html", title: gettext("Users"), path: user_path(@conn, :index), conn: @conn

@@ -1,20 +1,22 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Listing Users
+      .page-title
+        = dgettext "users", "Listing Users"
     .actions
       a.btn.btn-sm.btn-circle.green href=user_path(@conn, :new)
         i.fa.fa-plus
-        |  New User
+        | &nbsp;
+        = dgettext "users", "New User"
 
   .portlet-body
     table.table.table-hover.table-light
       thead
         tr.uppercase
           th width="40px"
-          th Name
-          th Login
-          th Admin
+          th = dgettext "users", "Name"
+          th = dgettext "users", "Login"
+          th = dgettext "users", "Admin"
           th
       tbody
         = for user <- @users do
@@ -28,8 +30,10 @@
             td.text-right
               a.btn.btn-xs.btn-outline.btn-circle.green href=user_path(@conn, :show, user)
                 i.fa.fa-eye
-                |  Show
+                | &nbsp;
+                = gettext "Show"
               a.btn.btn-xs.btn-outline.btn-circle.blue href=user_path(@conn, :edit, user)
                 i.fa.fa-edit
-                |  Edit
-              = link "Delete", to: user_path(@conn, :delete, user), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"
+                | &nbsp;
+                = gettext "Edit"
+              = link gettext("Delete"), to: user_path(@conn, :delete, user), method: "delete", data: [confirm: gettext("Are you sure?")], class: "btn btn-xs btn-outline btn-circle red"

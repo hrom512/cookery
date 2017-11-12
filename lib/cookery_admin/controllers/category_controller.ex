@@ -23,7 +23,7 @@ defmodule CookeryAdmin.CategoryController do
     case Recipes.create_category(category_params, parent) do
       {:ok, _category} ->
         conn
-        |> put_flash(:info, "Category created successfully.")
+        |> put_flash(:info, dgettext("categories", "Category created successfully."))
         |> redirect(to: category_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -45,7 +45,7 @@ defmodule CookeryAdmin.CategoryController do
     case Recipes.update_category(category, category_params) do
       {:ok, _category} ->
         conn
-        |> put_flash(:info, "Category updated successfully.")
+        |> put_flash(:info, dgettext("categories", "Category updated successfully."))
         |> redirect(to: category_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", category: category, changeset: changeset)
@@ -57,7 +57,7 @@ defmodule CookeryAdmin.CategoryController do
     Recipes.delete_category(category)
 
     conn
-    |> put_flash(:info, "Category deleted successfully.")
+    |> put_flash(:info, dgettext("categories", "Category deleted successfully."))
     |> redirect(to: category_path(conn, :index))
   end
 end
