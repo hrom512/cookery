@@ -48,10 +48,10 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: lib/cookery_admin/templates/category/form.html.slim:1
-#: lib/cookery_admin/templates/recipe/form.html.slim:1
-#: lib/cookery_admin/templates/user/change_password.html.slim:1
-#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/category/form.html.slim:2
+#: lib/cookery_admin/templates/recipe/form.html.slim:3
+#: lib/cookery_admin/templates/user/change_password.html.slim:3
+#: lib/cookery_admin/templates/user/form.html.slim:3
 msgid "Submit"
 msgstr ""
 

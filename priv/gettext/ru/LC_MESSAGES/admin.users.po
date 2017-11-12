@@ -29,7 +29,7 @@ msgstr "Изменить пароль"
 msgid "Listing Users"
 msgstr "Пользователи"
 
-#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/user/form.html.slim:2
 #: lib/cookery_admin/templates/user/index.html.slim:1
 #: lib/cookery_admin/templates/user/show.html.slim:1
 msgid "Login"
@@ -50,7 +50,7 @@ msgstr "Создать пользователя"
 msgid "Password updated successfully."
 msgstr "Пароль обновлен."
 
-#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/user/form.html.slim:2
 #: lib/cookery_admin/templates/user/show.html.slim:1
 msgid "Timezone"
 msgstr "Часовой пояс"
@@ -71,6 +71,11 @@ msgstr "Пользователь обновлен."
 msgid "Back to user"
 msgstr "Назад к странице пользователя"
 
-#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/user/change_password.html.slim:2
+#: lib/cookery_admin/templates/user/form.html.slim:3
 msgid "Password"
 msgstr "Пароль"
+
+#: lib/cookery_admin/templates/user/change_password.html.slim:3
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"

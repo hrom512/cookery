@@ -35,6 +35,6 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/cookery_admin/templates/category/form.html.slim:1
+#: lib/cookery_admin/templates/category/form.html.slim:2
 msgid "Parent"
 msgstr ""

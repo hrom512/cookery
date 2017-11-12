@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Language: en\n"
 
-#: lib/cookery_admin/templates/recipe/form.html.slim:1
+#: lib/cookery_admin/templates/recipe/form.html.slim:3
 #: lib/cookery_admin/templates/recipe/show.html.slim:1
 msgid "Categories"
 msgstr ""
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: lib/cookery_admin/templates/recipe/form.html.slim:1
+#: lib/cookery_admin/templates/recipe/form.html.slim:2
 #: lib/cookery_admin/templates/recipe/index.html.slim:1
 #: lib/cookery_admin/templates/recipe/show.html.slim:1
 msgid "Description"

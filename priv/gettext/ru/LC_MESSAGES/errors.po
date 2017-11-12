@@ -11,10 +11,10 @@ msgstr ""
 "Language: ru\n"
 
 msgid "can't be blank"
-msgstr "поле не может быть пустым"
+msgstr "заполните поле"
 
 msgid "has already been taken"
-msgstr "поле должно быть уникальным"
+msgstr "введите уникальное значение"
 
 msgid "is invalid"
 msgstr ""
@@ -32,7 +32,7 @@ msgid "is reserved"
 msgstr ""
 
 msgid "does not match confirmation"
-msgstr ""
+msgstr "подтверждение введено некорректно"
 
 msgid "is still associated with this entry"
 msgstr ""
@@ -54,9 +54,9 @@ msgstr[2] ""
 
 msgid "should be at least %{count} character(s)"
 msgid_plural "should be at least %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "введите %{count} или более символов"
+msgstr[1] "введите %{count} или более символов"
+msgstr[2] "введите %{count} или более символов"
 
 msgid "should have at least %{count} item(s)"
 msgid_plural "should have at least %{count} item(s)"

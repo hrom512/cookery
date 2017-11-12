@@ -32,10 +32,7 @@ defmodule CookeryAdmin.FormHelpers do
     )
   end
 
-  @doc """
-  Generates container tag with label, input, error message.
-  """
-  def form_field(form, changeset, field, title, field_type) do
+  defp form_field(form, changeset, field, title, field_type) do
     content_tag :div, class: "form-group #{error_class(changeset, field)}" do
       [
         label(form, field, title),
@@ -45,26 +42,17 @@ defmodule CookeryAdmin.FormHelpers do
     end
   end
 
-  @doc """
-  Returns class "has-error" if changeset contains errors for field.
-  """
-  def error_class(changeset, field) do
+  defp error_class(changeset, field) do
     if changeset.action && changeset.errors[field], do: "has-error"
   end
 
-  @doc """
-  Generates tag for inlined form input errors.
-  """
-  def error_tag(form, field) do
+  defp error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
       content_tag :span, translate_error(error), class: "help-block"
     end)
   end
 
-  @doc """
-  Translates an error message using gettext.
-  """
-  def translate_error({msg, opts}) do
+  defp translate_error({msg, opts}) do
     if count = opts[:count] do
       Gettext.dngettext(CookeryAdmin.Gettext, "errors", msg, msg, count, opts)
     else

@@ -35,6 +35,6 @@ msgstr "Создать категорию"
 msgid "Name"
 msgstr "Название"
 
-#: lib/cookery_admin/templates/category/form.html.slim:1
+#: lib/cookery_admin/templates/category/form.html.slim:2
 msgid "Parent"
 msgstr "Родительская категория"
