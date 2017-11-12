@@ -28,7 +28,7 @@
         td = @user.login
       tr
         td = dgettext "users", "Admin"
-        td = @user.is_admin
+        td = gettext_yes_no(@user.is_admin)
       tr
         td = dgettext "users", "Timezone"
         td = @user.timezone

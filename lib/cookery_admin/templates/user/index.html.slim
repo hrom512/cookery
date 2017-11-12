@@ -25,7 +25,7 @@
               img src=Cookery.Avatar.make_url(user, :thumb)
             td = user.name
             td = user.login
-            td = user.is_admin
+            td = gettext_yes_no(user.is_admin)
 
             td.text-right
               a.btn.btn-xs.btn-outline.btn-circle.green href=user_path(@conn, :show, user)

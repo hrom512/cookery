@@ -29,6 +29,7 @@ defmodule CookeryAdmin do
 
       import CookeryAdmin.Router.Helpers
       import CookeryAdmin.ErrorHelpers
+      import CookeryAdmin.GettextHelpers
       import CookeryAdmin.Gettext
 
       import Cookery.DateTimeHelpers

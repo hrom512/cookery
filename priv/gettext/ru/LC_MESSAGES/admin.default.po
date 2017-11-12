@@ -98,3 +98,11 @@ msgstr "Системные"
 #: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
 msgid "Users"
 msgstr "Пользователи"
+
+#: lib/cookery_admin/views/gettext_helpers.ex:7
+msgid "No"
+msgstr "Нет"
+
+#: lib/cookery_admin/views/gettext_helpers.ex:6
+msgid "Yes"
+msgstr "Да"
