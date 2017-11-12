@@ -1,16 +1,18 @@
 = form_for @changeset, @action, [multipart: true], fn f ->
   .form-body
-    = form_field(f, @changeset, :name)
+    = form_field(f, @changeset, :name, dgettext("users", "Name"))
 
     = if @avatar do
-      = form_field_file(f, @changeset, :avatar)
+      = form_field_file(f, @changeset, :avatar, dgettext("users", "Avatar"))
 
-    = form_field_select(f, @changeset, :timezone, timezones_list())
+    = form_field_select(f, @changeset, :timezone, timezones_list(),
+        dgettext("users", "Timezone"))
 
-    = form_field(f, @changeset, :login)
+    = form_field(f, @changeset, :login, dgettext("users", "Login"))
 
     = if @password do
-      = form_field_password(f, @changeset, :password)
+      = form_field_password(f, @changeset, :password,
+          dgettext("users", "Password"))
 
   .form-actions
     = submit gettext("Submit"), class: "btn blue"

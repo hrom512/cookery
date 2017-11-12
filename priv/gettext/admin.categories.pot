@@ -30,3 +30,11 @@ msgstr ""
 #: lib/cookery_admin/templates/category/new.html.slim:1
 msgid "New Category"
 msgstr ""
+
+#: lib/cookery_admin/templates/category/form.html.slim:1
+msgid "Name"
+msgstr ""
+
+#: lib/cookery_admin/templates/category/form.html.slim:1
+msgid "Parent"
+msgstr ""

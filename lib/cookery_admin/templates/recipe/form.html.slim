@@ -1,8 +1,12 @@
 = form_for @changeset, @action, fn f ->
   .form-body
-    = form_field(f, @changeset, :title)
-    = form_field_textarea(f, @changeset, :description)
-    = form_field_multiple_select(f, @changeset, :categories_ids, categories_for_select())
+    = form_field(f, @changeset, :title, dgettext("recipes", "Title"))
+
+    = form_field_textarea(f, @changeset, :description,
+        dgettext("recipes", "Description"))
+
+    = form_field_multiple_select(f, @changeset, :categories_ids,
+        categories_for_select(), dgettext("recipes", "Categories"))
 
   .form-actions
     = submit gettext("Submit"), class: "btn blue"
