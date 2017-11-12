@@ -1,31 +1,16 @@
 = form_for @changeset, @action, [multipart: true], fn f ->
   .form-body
-    .form-group class="#{if @changeset.action && @changeset.errors[:name] do "has-error" end}"
-      = label f, :name
-      = text_input f, :name, class: "form-control"
-      = error_tag f, :name
+    = form_field(f, @changeset, :name)
 
     = if @avatar do
-      .form-group class="#{if @changeset.action && @changeset.errors[:avatar] do "has-error" end}"
-        = label f, :avatar
-        = file_input f, :avatar, class: "form-control"
-        = error_tag f, :avatar
+      = form_field_file(f, @changeset, :avatar)
 
-    .form-group class="#{if @changeset.action && @changeset.errors[:timezone] do "has-error" end}"
-      = label f, :timezone
-      = select f, :timezone, timezones_list, class: "form-control"
-      = error_tag f, :timezone
+    = form_field_select(f, @changeset, :timezone, timezones_list())
 
-    .form-group class="#{if @changeset.action && @changeset.errors[:login] do "has-error" end}"
-      = label f, :login
-      = text_input f, :login, class: "form-control"
-      = error_tag f, :login
+    = form_field(f, @changeset, :login)
 
     = if @password do
-      .form-group class="#{if @changeset.action && @changeset.errors[:password] do "has-error" end}"
-        = label f, :password
-        = password_input f, :password, class: "form-control"
-        = error_tag f, :password
+      = form_field_password(f, @changeset, :password)
 
   .form-actions
     = submit gettext("Submit"), class: "btn blue"

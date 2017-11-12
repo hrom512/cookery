@@ -1,19 +1,8 @@
 = form_for @changeset, @action, fn f ->
   .form-body
-    .form-group class="#{if @changeset.action && @changeset.errors[:title] do "has-error" end}"
-      = label f, :title
-      = text_input f, :title, class: "form-control"
-      = error_tag f, :title
-
-    .form-group class="#{if @changeset.action && @changeset.errors[:description] do "has-error" end}"
-      = label f, :description
-      = textarea f, :description, class: "form-control"
-      = error_tag f, :description
-
-    .form-group class="#{if @changeset.action && @changeset.errors[:categories_ids] do "has-error" end}"
-      = label f, :categories_ids
-      = multiple_select f, :categories_ids, categories_for_select(), class: "form-control", style: "height: 300px;"
-      = error_tag f, :categories_ids
+    = form_field(f, @changeset, :title)
+    = form_field_textarea(f, @changeset, :description)
+    = form_field_multiple_select(f, @changeset, :categories_ids, categories_for_select())
 
   .form-actions
     = submit gettext("Submit"), class: "btn blue"
