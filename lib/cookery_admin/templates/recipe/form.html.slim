@@ -6,7 +6,7 @@
         dgettext("admin.recipes", "Description"))
 
     = form_field_multiple_select(f, @changeset, :categories_ids,
-        categories_for_select(), dgettext("admin.recipes", "Categories"))
+        dgettext("admin.recipes", "Categories"), categories_for_select())
 
   .form-actions
     = submit dgettext("admin", "Submit"), class: "btn blue"
