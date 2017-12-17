@@ -257,10 +257,24 @@ CREATE UNIQUE INDEX recipes_categories_recipe_id_category_id_index ON recipes_ca
 
 
 --
+-- Name: recipes_title_user_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX recipes_title_user_id_index ON recipes USING btree (title, user_id);
+
+
+--
 -- Name: recipes_user_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX recipes_user_id_index ON recipes USING btree (user_id);
+
+
+--
+-- Name: users_login_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX users_login_index ON users USING btree (login);
 
 
 --
@@ -291,5 +305,5 @@ ALTER TABLE ONLY recipes
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558);
+INSERT INTO "schema_migrations" (version) VALUES (20170809193833), (20170812125651), (20170813181846), (20170825175335), (20170902231856), (20170903114339), (20170903173838), (20170929211033), (20170930181558), (20171112125000);
 

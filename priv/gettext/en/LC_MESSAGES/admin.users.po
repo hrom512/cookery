@@ -1,0 +1,81 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+
+#: lib/cookery_admin/templates/user/index.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Admin"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Avatar"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/change_password.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Change password"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/index.html.slim:1
+msgid "Listing Users"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/form.html.slim:2
+#: lib/cookery_admin/templates/user/index.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Login"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/form.html.slim:1
+#: lib/cookery_admin/templates/user/index.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Name"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/index.html.slim:1
+#: lib/cookery_admin/templates/user/new.html.slim:1
+msgid "New User"
+msgstr ""
+
+#: lib/cookery_admin/controllers/user_controller.ex:66
+msgid "Password updated successfully."
+msgstr ""
+
+#: lib/cookery_admin/templates/user/form.html.slim:2
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Timezone"
+msgstr ""
+
+#: lib/cookery_admin/controllers/user_controller.ex:23
+msgid "User created successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/user_controller.ex:78
+msgid "User deleted successfully."
+msgstr ""
+
+#: lib/cookery_admin/controllers/user_controller.ex:47
+msgid "User updated successfully."
+msgstr ""
+
+#: lib/cookery_admin/templates/user/change_password.html.slim:1
+msgid "Back to user"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/change_password.html.slim:2
+#: lib/cookery_admin/templates/user/form.html.slim:3
+msgid "Password"
+msgstr ""
+
+#: lib/cookery_admin/templates/user/change_password.html.slim:3
+msgid "Password confirmation"
+msgstr ""

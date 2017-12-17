@@ -1,11 +1,13 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Listing Categories
+      .page-title
+        = dgettext "admin.categories", "Listing Categories"
     .actions
       a.btn.btn-sm.btn-circle.green href=category_path(@conn, :new)
         i.fa.fa-plus
-        |  New Category
+        | &nbsp;
+        = dgettext "admin.categories", "New Category"
 
   .portlet-body
     = render "categories_list.html", %{conn: @conn, categories: @categories}

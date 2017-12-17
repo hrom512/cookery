@@ -1,11 +1,12 @@
 .portlet
   .portlet-title
     .caption
-      .page-title New Recipe
+      .page-title = dgettext "admin.recipes", "New Recipe"
     .actions
       a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn, :index)
         i.fa.fa-arrow-left
-        |  Back to list
+        | &nbsp;
+        = dgettext "admin", "Back to list"
 
   .portlet-body.form
     = render "form.html", Map.put(assigns, :action, recipe_path(@conn, :create))

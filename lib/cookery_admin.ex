@@ -28,7 +28,8 @@ defmodule CookeryAdmin do
       use Phoenix.HTML
 
       import CookeryAdmin.Router.Helpers
-      import CookeryAdmin.ErrorHelpers
+      import CookeryAdmin.FormHelpers
+      import CookeryAdmin.GettextHelpers
       import CookeryAdmin.Gettext
 
       import Cookery.DateTimeHelpers

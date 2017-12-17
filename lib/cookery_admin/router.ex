@@ -9,6 +9,10 @@ defmodule CookeryAdmin.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :set_locale do
+    plug CookeryAdmin.SetLocale
+  end
+
   pipeline :browser_auth do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
@@ -19,7 +23,7 @@ defmodule CookeryAdmin.Router do
   end
 
   scope "/", CookeryAdmin do
-    pipe_through [:browser, :browser_auth, :require_login]
+    pipe_through [:browser, :set_locale, :browser_auth, :require_login]
 
     get "/", DashboardController, :index
 

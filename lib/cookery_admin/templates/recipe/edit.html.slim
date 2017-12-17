@@ -1,15 +1,18 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Edit Recipe #{@recipe.id}
+      .page-title
+        = @recipe.title
     .actions
       a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn, :index)
         i.fa.fa-arrow-left
-        |  Back to list
+        | &nbsp;
+        = dgettext "admin", "Back to list"
       | &nbsp;
       a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn, :show, @recipe)
         i.fa.fa-eye
-        |  Show
+        | &nbsp;
+        = dgettext "admin", "Show"
 
   .portlet-body.form
     = render "form.html", Map.put(assigns, :action, recipe_path(@conn, :update, @recipe))

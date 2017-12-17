@@ -1,20 +1,22 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Listing Users
+      .page-title
+        = dgettext "admin.users", "Listing Users"
     .actions
       a.btn.btn-sm.btn-circle.green href=user_path(@conn, :new)
         i.fa.fa-plus
-        |  New User
+        | &nbsp;
+        = dgettext "admin.users", "New User"
 
   .portlet-body
     table.table.table-hover.table-light
       thead
         tr.uppercase
           th width="40px"
-          th Name
-          th Login
-          th Admin
+          th = dgettext "admin.users", "Name"
+          th = dgettext "admin.users", "Login"
+          th = dgettext "admin.users", "Admin"
           th
       tbody
         = for user <- @users do
@@ -23,13 +25,15 @@
               img src=Cookery.Avatar.make_url(user, :thumb)
             td = user.name
             td = user.login
-            td = user.is_admin
+            td = gettext_yes_no(user.is_admin)
 
             td.text-right
               a.btn.btn-xs.btn-outline.btn-circle.green href=user_path(@conn, :show, user)
                 i.fa.fa-eye
-                |  Show
+                | &nbsp;
+                = dgettext "admin", "Show"
               a.btn.btn-xs.btn-outline.btn-circle.blue href=user_path(@conn, :edit, user)
                 i.fa.fa-edit
-                |  Edit
-              = link "Delete", to: user_path(@conn, :delete, user), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"
+                | &nbsp;
+                = dgettext "admin", "Edit"
+              = link dgettext("admin", "Delete"), to: user_path(@conn, :delete, user), method: "delete", data: [confirm: dgettext("admin", "Are you sure?")], class: "btn btn-xs btn-outline btn-circle red"

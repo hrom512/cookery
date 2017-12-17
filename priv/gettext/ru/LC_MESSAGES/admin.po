@@ -1,0 +1,108 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+
+#: lib/cookery_admin/templates/category/categories_list.html.slim:1
+#: lib/cookery_admin/templates/recipe/index.html.slim:2
+#: lib/cookery_admin/templates/user/index.html.slim:1
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: lib/cookery_admin/templates/category/edit.html.slim:1
+#: lib/cookery_admin/templates/category/new.html.slim:1
+#: lib/cookery_admin/templates/recipe/edit.html.slim:1
+#: lib/cookery_admin/templates/recipe/new.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+#: lib/cookery_admin/templates/user/edit.html.slim:1
+#: lib/cookery_admin/templates/user/new.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Back to list"
+msgstr "Назад к списку"
+
+#: lib/cookery_admin/templates/category/categories_list.html.slim:1
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/user/index.html.slim:1
+msgid "Delete"
+msgstr "Удалить"
+
+#: lib/cookery_admin/templates/category/categories_list.html.slim:1
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/recipe/show.html.slim:1
+#: lib/cookery_admin/templates/user/index.html.slim:1
+#: lib/cookery_admin/templates/user/show.html.slim:1
+msgid "Edit"
+msgstr "Редактировать"
+
+#: lib/cookery_admin/templates/recipe/edit.html.slim:1
+#: lib/cookery_admin/templates/recipe/index.html.slim:1
+#: lib/cookery_admin/templates/user/edit.html.slim:1
+#: lib/cookery_admin/templates/user/index.html.slim:1
+msgid "Show"
+msgstr "Смотреть"
+
+#: lib/cookery_admin/templates/category/form.html.slim:2
+#: lib/cookery_admin/templates/recipe/form.html.slim:3
+#: lib/cookery_admin/templates/user/change_password.html.slim:3
+#: lib/cookery_admin/templates/user/form.html.slim:3
+msgid "Submit"
+msgstr "Отправить"
+
+#: lib/cookery_admin/templates/layout/app.html.slim:1
+msgid "Admin"
+msgstr "Панель управления"
+
+#: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
+msgid "Categories"
+msgstr "Категории"
+
+#: lib/cookery_admin/templates/layout/_header.html.slim:1
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: lib/cookery_admin/templates/dashboard/index.html.slim:1
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: lib/cookery_admin/templates/layout/_header.html.slim:1
+msgid "Log Out"
+msgstr "Выйти"
+
+#: lib/cookery_admin/templates/layout/_footer.html.slim:1
+msgid "Metronic Theme"
+msgstr ""
+
+#: lib/cookery_admin/templates/layout/_header.html.slim:1
+msgid "My Profile"
+msgstr "Личный кабинет"
+
+#: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
+msgid "Recipes"
+msgstr "Рецепты"
+
+#: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
+msgid "Resorces"
+msgstr "Ресурсы"
+
+#: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
+msgid "System"
+msgstr "Системные"
+
+#: lib/cookery_admin/templates/layout/_sidebar.html.slim:1
+msgid "Users"
+msgstr "Пользователи"
+
+#: lib/cookery_admin/views/gettext_helpers.ex:7
+msgid "No"
+msgstr "Нет"
+
+#: lib/cookery_admin/views/gettext_helpers.ex:6
+msgid "Yes"
+msgstr "Да"

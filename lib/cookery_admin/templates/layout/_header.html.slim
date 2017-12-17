@@ -23,13 +23,13 @@
             li
               a href=user_path(@conn, :show, @current_user)
                 i.icon-user
-                | My Profile
+                = dgettext "admin", "My Profile"
             li
               a href=user_path(@conn, :change_password, @current_user)
                 i.icon-lock
-                | Change password
+                = dgettext "admin", "Change password"
             li.divider
             li
               a href="/logout"
                 i.icon-key
-                | Log Out
+                = dgettext "admin", "Log Out"

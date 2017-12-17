@@ -1,0 +1,40 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+
+#: lib/cookery_admin/controllers/category_controller.ex:26
+msgid "Category created successfully."
+msgstr "Категория создана."
+
+#: lib/cookery_admin/controllers/category_controller.ex:60
+msgid "Category deleted successfully."
+msgstr "Категория удалена."
+
+#: lib/cookery_admin/controllers/category_controller.ex:48
+msgid "Category updated successfully."
+msgstr "Категория обновлена."
+
+#: lib/cookery_admin/templates/category/index.html.slim:1
+msgid "Listing Categories"
+msgstr "Категории"
+
+#: lib/cookery_admin/templates/category/index.html.slim:1
+#: lib/cookery_admin/templates/category/new.html.slim:1
+msgid "New Category"
+msgstr "Создать категорию"
+
+#: lib/cookery_admin/templates/category/form.html.slim:1
+msgid "Name"
+msgstr "Название"
+
+#: lib/cookery_admin/templates/category/form.html.slim:2
+msgid "Parent"
+msgstr "Родительская категория"

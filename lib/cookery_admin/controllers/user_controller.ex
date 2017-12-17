@@ -20,7 +20,7 @@ defmodule CookeryAdmin.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, dgettext("admin.users", "User created successfully."))
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule CookeryAdmin.UserController do
     case Accounts.update_user(user, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, dgettext("admin.users", "User updated successfully."))
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
@@ -63,7 +63,7 @@ defmodule CookeryAdmin.UserController do
     case Accounts.update_user_password(user, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Password updated successfully.")
+        |> put_flash(:info, dgettext("admin.users", "Password updated successfully."))
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "change_password.html", user: user, changeset: changeset)
@@ -75,7 +75,7 @@ defmodule CookeryAdmin.UserController do
     {:ok, _user} = Accounts.delete_user(user)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, dgettext("admin.users", "User deleted successfully."))
     |> redirect(to: user_path(conn, :index))
   end
 end

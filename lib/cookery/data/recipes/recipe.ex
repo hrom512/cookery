@@ -24,5 +24,6 @@ defmodule Cookery.Data.Recipes.Recipe do
     recipe
     |> cast(attrs, [:title, :description, :user_id, :categories_ids])
     |> validate_required([:title, :user_id])
+    |> unique_constraint(:title, name: :recipes_title_user_id_index)
   end
 end

@@ -1,20 +1,22 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Listing Recipes
+      .page-title
+        = dgettext "admin.recipes", "Listing Recipes"
     .actions
       a.btn.btn-sm.btn-circle.green href=recipe_path(@conn, :new)
         i.fa.fa-plus
-        |  New Recipe
+        | &nbsp;
+        = dgettext "admin.recipes", "New Recipe"
 
   .portlet-body
     table.table.table-hover.table-light
       thead
         tr.uppercase
-          th Title
-          th Description
-          th User
-          th Created
+          th = dgettext "admin.recipes", "Title"
+          th = dgettext "admin.recipes", "Description"
+          th = dgettext "admin.recipes", "User"
+          th = dgettext "admin.recipes", "Created"
           th
       tbody
         = for recipe <- @recipes do
@@ -27,8 +29,14 @@
             td.text-right
               a.btn.btn-xs.btn-outline.btn-circle.green href=recipe_path(@conn, :show, recipe)
                 i.fa.fa-eye
-                |  Show
+                | &nbsp;
+                = dgettext "admin", "Show"
               a.btn.btn-xs.btn-outline.btn-circle.blue href=recipe_path(@conn, :edit, recipe)
                 i.fa.fa-edit
-                |  Edit
-              = link "Delete", to: recipe_path(@conn, :delete, recipe), method: "delete", data: [confirm: "Are you sure?"], class: "btn btn-xs btn-outline btn-circle red"
+                | &nbsp;
+                = dgettext "admin", "Edit"
+              = link dgettext("admin", "Delete"), to: recipe_path(@conn, :delete, recipe),
+                  method: "delete", data: [confirm: dgettext("admin", "Are you sure?")],
+                  class: "btn btn-xs btn-outline btn-circle red"
+
+

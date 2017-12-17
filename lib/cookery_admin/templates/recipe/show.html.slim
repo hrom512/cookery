@@ -1,35 +1,33 @@
 .portlet
   .portlet-title
     .caption
-      .page-title Recipe #{@recipe.id}
+      .page-title
+        = @recipe.title
     .actions
       a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn, :index)
         i.fa.fa-arrow-left
-        |  Back to list
+        | &nbsp;
+        = dgettext "admin", "Back to list"
       | &nbsp;
       a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn, :edit, @recipe)
         i.fa.fa-edit
-        |  Edit
+        | &nbsp;
+        = dgettext "admin", "Edit"
 
   .portlet-body
     table.table.table-hover.table-light
-      thead
-        tr.uppercase
-          th width="20%" Name
-          th width="80%" Value
-      tbody
-        tr
-          td Title
-          td = @recipe.title
-        tr
-          td Description
-          td = @recipe.description
-        tr
-          td Categories
-          td = recipe_categories(@recipe)
-        tr
-          td User
-          td = @recipe.user.login
-        tr
-          td Created
-          td = @recipe.inserted_at |> format_datetime(@current_timezone)
+      tr
+        td = dgettext "admin.recipes", "Title"
+        td = @recipe.title
+      tr
+        td = dgettext "admin.recipes", "Description"
+        td = @recipe.description
+      tr
+        td = dgettext "admin.recipes", "Categories"
+        td = recipe_categories(@recipe)
+      tr
+        td = dgettext "admin.recipes", "User"
+        td = @recipe.user.login
+      tr
+        td = dgettext "admin.recipes", "Created"
+        td = @recipe.inserted_at |> format_datetime(@current_timezone)
