@@ -7,27 +7,27 @@
       a.btn.btn-sm.btn-circle.btn-default href=recipe_path(@conn, :index)
         i.fa.fa-arrow-left
         | &nbsp;
-        = gettext "Back to list"
+        = dgettext "admin", "Back to list"
       | &nbsp;
       a.btn.btn-sm.btn-circle.blue href=recipe_path(@conn, :edit, @recipe)
         i.fa.fa-edit
         | &nbsp;
-        = gettext "Edit"
+        = dgettext "admin", "Edit"
 
   .portlet-body
     table.table.table-hover.table-light
       tr
-        td = dgettext "recipes", "Title"
+        td = dgettext "admin.recipes", "Title"
         td = @recipe.title
       tr
-        td = dgettext "recipes", "Description"
+        td = dgettext "admin.recipes", "Description"
         td = @recipe.description
       tr
-        td = dgettext "recipes", "Categories"
+        td = dgettext "admin.recipes", "Categories"
         td = recipe_categories(@recipe)
       tr
-        td = dgettext "recipes", "User"
+        td = dgettext "admin.recipes", "User"
         td = @recipe.user.login
       tr
-        td = dgettext "recipes", "Created"
+        td = dgettext "admin.recipes", "Created"
         td = @recipe.inserted_at |> format_datetime(@current_timezone)

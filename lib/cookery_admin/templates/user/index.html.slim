@@ -2,21 +2,21 @@
   .portlet-title
     .caption
       .page-title
-        = dgettext "users", "Listing Users"
+        = dgettext "admin.users", "Listing Users"
     .actions
       a.btn.btn-sm.btn-circle.green href=user_path(@conn, :new)
         i.fa.fa-plus
         | &nbsp;
-        = dgettext "users", "New User"
+        = dgettext "admin.users", "New User"
 
   .portlet-body
     table.table.table-hover.table-light
       thead
         tr.uppercase
           th width="40px"
-          th = dgettext "users", "Name"
-          th = dgettext "users", "Login"
-          th = dgettext "users", "Admin"
+          th = dgettext "admin.users", "Name"
+          th = dgettext "admin.users", "Login"
+          th = dgettext "admin.users", "Admin"
           th
       tbody
         = for user <- @users do
@@ -31,9 +31,9 @@
               a.btn.btn-xs.btn-outline.btn-circle.green href=user_path(@conn, :show, user)
                 i.fa.fa-eye
                 | &nbsp;
-                = gettext "Show"
+                = dgettext "admin", "Show"
               a.btn.btn-xs.btn-outline.btn-circle.blue href=user_path(@conn, :edit, user)
                 i.fa.fa-edit
                 | &nbsp;
-                = gettext "Edit"
-              = link gettext("Delete"), to: user_path(@conn, :delete, user), method: "delete", data: [confirm: gettext("Are you sure?")], class: "btn btn-xs btn-outline btn-circle red"
+                = dgettext "admin", "Edit"
+              = link dgettext("admin", "Delete"), to: user_path(@conn, :delete, user), method: "delete", data: [confirm: dgettext("admin", "Are you sure?")], class: "btn btn-xs btn-outline btn-circle red"

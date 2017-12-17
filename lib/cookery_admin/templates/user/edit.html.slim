@@ -7,12 +7,12 @@
       a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn, :index)
         i.fa.fa-arrow-left
         | &nbsp;
-        = gettext "Back to list"
+        = dgettext "admin", "Back to list"
       | &nbsp;
       a.btn.btn-sm.btn-circle.blue href=user_path(@conn, :show, @user)
         i.fa.fa-eye
         | &nbsp;
-        = gettext "Show"
+        = dgettext "admin", "Show"
 
   .portlet-body.form
     = render "form.html", Map.merge(assigns, %{password: false, avatar: true, action: user_path(@conn, :update, @user)})

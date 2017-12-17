@@ -2,12 +2,12 @@
   .portlet-title
     .caption
       .page-title
-        = dgettext "users", "New User"
+        = dgettext "admin.users", "New User"
     .actions
       a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn, :index)
         i.fa.fa-arrow-left
         | &nbsp;
-        = gettext "Back to list"
+        = dgettext "admin", "Back to list"
 
   .portlet-body.form
     = render "form.html", Map.merge(assigns, %{password: true, avatar: false, action: user_path(@conn, :create)})

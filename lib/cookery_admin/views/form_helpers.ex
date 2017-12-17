@@ -54,9 +54,9 @@ defmodule CookeryAdmin.FormHelpers do
 
   defp translate_error({msg, opts}) do
     if count = opts[:count] do
-      Gettext.dngettext(CookeryAdmin.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(CookeryAdmin.Gettext, "admin.errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(CookeryAdmin.Gettext, "errors", msg, opts)
+      Gettext.dgettext(CookeryAdmin.Gettext, "admin.errors", msg, opts)
     end
   end
 end

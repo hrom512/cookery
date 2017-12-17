@@ -6,33 +6,33 @@
       a.btn.btn-sm.btn-circle.btn-default href=user_path(@conn, :index)
         i.fa.fa-arrow-left
         | &nbsp;
-        = gettext "Back to list"
+        = dgettext "admin", "Back to list"
       | &nbsp;
       a.btn.btn-sm.btn-circle.blue href=user_path(@conn, :edit, @user)
         i.fa.fa-edit
         | &nbsp;
-        = gettext "Edit"
+        = dgettext "admin", "Edit"
       | &nbsp;
       a.btn.btn-sm.btn-circle.red href=user_path(@conn, :change_password, @user)
         i.fa.fa-edit
         | &nbsp;
-        = dgettext "users", "Change password"
+        = dgettext "admin.users", "Change password"
 
   .portlet-body
     table.table.table-hover.table-light
       tr
-        td = dgettext "users", "Name"
+        td = dgettext "admin.users", "Name"
         td = @user.name
       tr
-        td = dgettext "users", "Login"
+        td = dgettext "admin.users", "Login"
         td = @user.login
       tr
-        td = dgettext "users", "Admin"
+        td = dgettext "admin.users", "Admin"
         td = gettext_yes_no(@user.is_admin)
       tr
-        td = dgettext "users", "Timezone"
+        td = dgettext "admin.users", "Timezone"
         td = @user.timezone
       tr
-        td = dgettext "users", "Avatar"
+        td = dgettext "admin.users", "Avatar"
         td
           img src=Cookery.Avatar.make_url(@user, :original)

@@ -1,9 +1,9 @@
 = form_for @changeset, @action, fn f ->
   .form-body
-    = form_field(f, @changeset, :name, dgettext("categories", "Name"))
+    = form_field(f, @changeset, :name, dgettext("admin.categories", "Name"))
 
     = form_field_select(f, @changeset, :parent_id, categories_for_select(),
-        dgettext("categories", "Parent"))
+        dgettext("admin.categories", "Parent"))
 
   .form-actions
-    = submit gettext("Submit"), class: "btn blue"
+    = submit dgettext("admin", "Submit"), class: "btn blue"

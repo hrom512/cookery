@@ -50,8 +50,7 @@ defmodule Cookery.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      # {:gettext, "~> 0.11"},
-      {:gettext, override: true, github: "hrom512/gettext", branch: "custom-options-for-domain"},
+      {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       # templates
       {:phoenix_slime, github: "slime-lang/phoenix_slime"},
