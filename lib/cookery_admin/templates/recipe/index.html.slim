@@ -1,12 +1,13 @@
 .portlet
   .portlet-title
     .caption
-      .page-title = dgettext "admin.recipes", "Listing Recipes"
+      .page-title
+        = dgettext "admin.recipes", "Listing Recipes"
     .actions
       a.btn.btn-sm.btn-circle.green href=recipe_path(@conn, :new)
         i.fa.fa-plus
-          | &nbsp;
-          = dgettext "admin.recipes", "New Recipe"
+        | &nbsp;
+        = dgettext "admin.recipes", "New Recipe"
 
   .portlet-body
     table.table.table-hover.table-light
